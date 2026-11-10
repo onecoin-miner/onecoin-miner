@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -16,7 +16,7 @@
 
     <style>
       :root {
-          --primary: #dc6516; /* Warna Oranye Koin ONE */
+          --primary: #dc6516; /* ONE Coin Orange */
           --primary-gold: #f3ba2f;
           --bg: #ffffff;
           --text-main: #1a1d23;
@@ -200,83 +200,83 @@
     </style>
   </head>
   <body>
-    <div id="toast">Disalin!</div>
+    <div id="toast">Copied!</div>
 
     <div id="app">
       <!-- PAGE 1: HOME -->
       <div id="page-home" class="page active">
         <div class="mining-section">
-          <!-- LOGO KOIN ONE -->
+          <!-- ONE COIN SVG LOGO -->
           <svg class="coin-svg-main" viewBox="0 0 100 100">
             <circle cx="50" cy="50" r="47" fill="#dc6516" stroke="#c0520b" stroke-width="2" />
             <circle cx="50" cy="50" r="37" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-dasharray="6.5, 4.5" />
             <path d="M 37 49 L 51 36 L 58 36 L 58 68 L 47 68 L 47 48 L 41 53 Z" fill="#ffffff" />
           </svg>
           <h2 style="font-weight: 900;">OnecoinMinerBot</h2>
-          <p style="color: var(--text-gray); font-size: 13px;">Otomatisasi Cloud Mining Aktif</p>
+          <p style="color: var(--text-gray); font-size: 13px;">Automated Cloud Mining Active</p>
         </div>
 
         <div class="balance-card">
           <div style="color: var(--text-gray); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
-            Saldo Mining Dapat Ditarik
+            Withdrawable Mining Balance
           </div>
           <div class="balance-amount">$<span id="bal-main">0.000000</span></div>
           <div class="mining-rate">
-            <i class="fas fa-bolt"></i> Penghasilan: $<span id="rate-display">0.01</span> / 24 Jam
+            <i class="fas fa-bolt"></i> Daily Profit: $<span id="rate-display">0.01</span> / 24h
           </div>
         </div>
 
         <div class="card">
-          <h4 style="font-size: 14px;">Paket Investasi & Tambah Koin ONE</h4>
+          <h4 style="font-size: 14px;">Investment Packages & Bonus ONE</h4>
           <p style="font-size: 11px; color: var(--text-gray);">
-            Investasi untuk menambah profit harian dan mendapatkan bonus Koin ONE
+            Invest to boost daily profits and receive extra ONE Coin bonuses
           </p>
           <div class="package-grid" id="pkg-list"></div>
         </div>
       </div>
 
-      <!-- PAGE 2: TASKS (TUGAS KOMUNITAS) -->
+      <!-- PAGE 2: TASKS -->
       <div id="page-tasks" class="page">
-        <h3 style="margin-bottom: 10px;">Tugas Komunitas</h3>
+        <h3 style="margin-bottom: 10px;">Community Tasks</h3>
         <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px;">
-          Selesaikan tugas bergabung ke channel resmi di bawah untuk mendapatkan <b style="color: var(--primary);">+10 Koin ONE</b> per tugas!
+          Join the official community channels below to earn <b style="color: var(--primary);">+10 ONE Coins</b> per task!
         </p>
 
-        <!-- TUGAS 1: DUROV -->
+        <!-- TASK 1: DUROV -->
         <div class="card">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <p style="font-weight: 700; font-size: 14px;">Gabung Channel Durov</p>
+              <p style="font-weight: 700; font-size: 14px;">Join Durov Channel</p>
               <small style="color: var(--primary); font-weight: 800;">Reward: +10 ONE</small>
             </div>
             <button id="btn-task-durov" class="btn" style="width: auto; margin:0; padding: 8px 15px; font-size: 12px;" onclick="doTask('durov', 'https://t.me/durov')">
-              Gabung
+              Join
             </button>
           </div>
         </div>
 
-        <!-- TUGAS 2: WALT NEWS -->
+        <!-- TASK 2: WALT NEWS -->
         <div class="card">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <p style="font-weight: 700; font-size: 14px;">Gabung Channel Walt News</p>
+              <p style="font-weight: 700; font-size: 14px;">Join Walt News Channel</p>
               <small style="color: var(--primary); font-weight: 800;">Reward: +10 ONE</small>
             </div>
             <button id="btn-task-walt" class="btn" style="width: auto; margin:0; padding: 8px 15px; font-size: 12px;" onclick="doTask('walt', 'https://t.me/walt_news')">
-              Gabung
+              Join
             </button>
           </div>
         </div>
 
-        <!-- TUGAS 3: ONECOIN NEWS BOT -->
+        <!-- TASK 3: 1COIN OFFICIAL -->
         <div class="card">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <p style="font-weight: 700; font-size: 14px;">Gabung Channel 1Coin</p>
+              <p style="font-weight: 700; font-size: 14px;">Join 1Coin Channel</p>
               <small style="color: var(--primary); font-weight: 800;">Reward: +10 ONE</small>
             </div>
-            <button id="btn-task-onecoin2" class="btn" style="width: auto; margin:0; padding: 8px 15px; font-size: 12px;" onclick="doTask('onecoin2', 'https://t.me/+OYe7EgW07oBkNDg1')">
-              Gabung
+            <button id="btn-task-onecoin2" class="btn" style="width: auto; margin:0; padding: 8px 15px; font-size: 12px;" onclick="doTask('onecoin2', 'https://t.me/+0Ye7EgW07oBkNDg1')">
+              Join
             </button>
           </div>
         </div>
@@ -293,17 +293,17 @@
           </p>
         </div>
 
-        <!-- SALDO MINING & KOIN ONE DI PROFILE -->
+        <!-- BALANCES IN PROFILE -->
         <div class="card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;">
           <div style="background: #fff; padding: 12px; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
-            <small style="color: var(--text-gray); font-size: 10px; font-weight: 700; text-transform: uppercase;">Saldo Mining (USDT)</small>
+            <small style="color: var(--text-gray); font-size: 10px; font-weight: 700; text-transform: uppercase;">Mining Balance</small>
             <div style="font-size: 15px; font-weight: 900; color: var(--text-main); margin-top: 5px;">
               $<span id="prof-bal-usdt">0.0000</span>
             </div>
           </div>
 
           <div style="background: #fff; padding: 12px; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
-            <small style="color: var(--text-gray); font-size: 10px; font-weight: 700; text-transform: uppercase;">Saldo Koin ONE</small>
+            <small style="color: var(--text-gray); font-size: 10px; font-weight: 700; text-transform: uppercase;">ONE Coin Balance</small>
             <div style="font-size: 15px; font-weight: 900; color: var(--primary); margin-top: 5px; display: flex; align-items: center; justify-content: center; gap: 5px;">
               <svg viewBox="0 0 100 100" style="width: 18px; height: 18px;">
                 <circle cx="50" cy="50" r="47" fill="#dc6516" stroke="#c0520b" stroke-width="2" />
@@ -316,130 +316,147 @@
         </div>
 
         <div class="card">
-          <h4 style="margin-bottom: 8px; font-size: 14px;">Link Undangan Anda</h4>
-          <div class="address-box" id="ref-link">Memuat link...</div>
-          <button class="btn btn-outline" style="height: 40px; font-size: 13px;" onclick="copyRef()">Salin Link Referral</button>
+          <h4 style="margin-bottom: 8px; font-size: 14px;">Your Referral Link</h4>
+          <div class="address-box" id="ref-link">Loading referral link...</div>
+          <button class="btn btn-outline" style="height: 40px; font-size: 13px;" onclick="copyRef()">Copy Referral Link</button>
           <div style="margin-top: 15px; font-size: 13px;">
-            Total Referral Aktif: <span id="ref-count" style="font-weight: 800;">0</span> pengguna
+            Total Active Referrals: <span id="ref-count" style="font-weight: 800;">0</span> users
           </div>
         </div>
 
-        <!-- IKAT KODE REFERRAL (DAPAT 10 KOIN ONE) -->
+        <!-- BIND INVITER CODE -->
         <div class="card">
-          <h4 style="margin-bottom: 5px; font-size: 14px;">Masukkan ID Pengundang</h4>
+          <h4 style="margin-bottom: 5px; font-size: 14px;">Enter Inviter ID</h4>
           <p style="font-size: 11px; color: var(--text-gray); margin-bottom: 8px;">
-            Ikat ID teman Anda dan dapatkan bonus instan <b style="color: var(--primary);">+10 Koin ONE</b>:
+            Bind your inviter's ID to claim an instant bonus of <b style="color: var(--primary);">+10 ONE Coins</b>:
           </p>
-          <input type="number" id="input-inviter-id" placeholder="Contoh: 12345678" />
-          <button class="btn" id="btn-submit-ref" onclick="submitManualRef()">Kaitkan Pengundang (+10 ONE)</button>
+          <input type="number" id="input-inviter-id" placeholder="e.g. 12345678" />
+          <button class="btn" id="btn-submit-ref" onclick="submitManualRef()">Bind Inviter (+10 ONE)</button>
         </div>
       </div>
 
       <!-- PAGE 4: WITHDRAW -->
       <div id="page-withdraw" class="page">
-        <h3 style="margin-bottom: 15px;">Pusat Penarikan</h3>
+        <h3 style="margin-bottom: 15px;">Withdrawal Center</h3>
 
-        <!-- PILIHAN 2 OPSI PENARIKAN (USDT & KOIN ONE) -->
+        <!-- WITHDRAWAL TABS -->
         <div class="wd-tab-container">
           <button class="wd-tab-btn active" id="tab-btn-usdt" onclick="switchWdTab('usdt')">
-            <i class="fas fa-dollar-sign"></i> USDT (Aktif)
+            <i class="fas fa-dollar-sign"></i> USDT (Active)
           </button>
           <button class="wd-tab-btn" id="tab-btn-one" onclick="switchWdTab('one')">
-            <i class="fas fa-coins"></i> Koin ONE <span class="badge-listing">Listing</span>
+            <i class="fas fa-coins"></i> ONE Coin <span id="badge-listing-tag" class="badge-listing">Listing</span>
           </button>
         </div>
 
-        <!-- =================== KONTEN OPSI 1: PENARIKAN USDT =================== -->
+        <!-- =================== OPTION 1: USDT WITHDRAWAL =================== -->
         <div id="wd-section-usdt">
-          
-          <!-- KOTAK STATUS SAAT TERKUNCI -->
           <div id="wd-locked-box" class="warning-box">
-            <b><i class="fas fa-lock"></i> Penarikan USDT Terkunci</b><br />
-            Status penarikan akun Anda saat ini <b>TERKUNCI</b>. Untuk membuka kunci penarikan, silakan lakukan deposit minimal <b>$1 USDT (BEP20)</b> ke alamat berikut dan tunggu verifikasi (ACC) dari Admin:
+            <b><i class="fas fa-lock"></i> USDT Withdrawal Locked</b><br />
+            Your withdrawal status is currently <b>LOCKED</b>. To unlock withdrawals, please deposit a minimum of <b>$1 USDT (BEP20)</b> to the official address below and wait for Admin verification:
             <div class="address-box" id="deposit-addr-display">0x541160E598Fd2d51c21aA977beb674bb207bFaB8</div>
             <button class="btn" style="background: #1a1d23; color: #fff; font-size: 11px; height: 38px; margin-top: 5px;" onclick="copyAddr()">
-              <i class="fas fa-copy"></i> Salin Alamat Deposit
+              <i class="fas fa-copy"></i> Copy Deposit Address
             </button>
           </div>
 
-          <!-- KOTAK STATUS SAAT SUDAH DI-ACC ADMIN (TERBUKA) -->
           <div id="wd-unlocked-box" class="info-box" style="display: none;">
-            <b><i class="fas fa-lock-open"></i> Penarikan Terbuka & Tidak Terkunci!</b><br />
-            Deposit Anda telah disetujui oleh Admin. Anda sekarang dapat menarik saldo USDT kapan saja (Minimal penarikan $0.05).
+            <b><i class="fas fa-lock-open"></i> Withdrawal Unlocked & Active!</b><br />
+            Your deposit has been verified by the Admin. You can now withdraw your USDT balance anytime (Min. $0.05 USDT).
           </div>
 
           <div class="card">
-            <label style="font-size: 11px; color: var(--text-gray);">Alamat Dompet Penerima (USDT BEP20)</label>
+            <label style="font-size: 11px; color: var(--text-gray);">Recipient Wallet Address (USDT BEP20)</label>
             <input type="text" id="wd-address" placeholder="0x..." />
 
-            <label style="font-size: 11px; color: var(--text-gray);">Jumlah Penarikan (Min. $0.05 USDT)</label>
+            <label style="font-size: 11px; color: var(--text-gray);">Withdrawal Amount (Min. $0.05 USDT)</label>
             <input type="number" id="wd-amt" placeholder="0.05" step="0.01" />
 
-            <button class="btn" onclick="handleWithdrawAction()">Tarik USDT Sekarang</button>
+            <button class="btn" onclick="handleWithdrawAction()">Withdraw USDT Now</button>
           </div>
 
-          <!-- RIWAYAT PENARIKAN DENGAN JUMLAH, ALAMAT, TANGGAL & STATUS -->
           <div class="card">
-            <h4 style="margin-bottom: 10px; font-size: 14px;">Riwayat Penarikan USDT</h4>
+            <h4 style="margin-bottom: 10px; font-size: 14px;">USDT Withdrawal History</h4>
             <div id="history-list"></div>
           </div>
         </div>
 
-        <!-- =================== KONTEN OPSI 2: PENARIKAN KOIN ONE =================== -->
+        <!-- =================== OPTION 2: ONE COIN WITHDRAWAL =================== -->
         <div id="wd-section-one" style="display: none;">
-          <div class="card" style="text-align: center; padding: 25px 20px;">
+          <!-- 1. LOCKED PHASE (PRE-LISTING) -->
+          <div id="one-prelisting-view" class="card" style="text-align: center; padding: 25px 20px;">
             <svg class="coin-svg-main" viewBox="0 0 100 100" style="width: 85px; height: 85px; margin: 0 auto 10px;">
               <circle cx="50" cy="50" r="47" fill="#dc6516" stroke="#c0520b" stroke-width="2" />
               <circle cx="50" cy="50" r="37" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-dasharray="6.5, 4.5" />
               <path d="M 37 49 L 51 36 L 58 36 L 58 68 L 47 68 L 47 48 L 41 53 Z" fill="#ffffff" />
             </svg>
-            <h4 style="font-size: 16px; margin-bottom: 5px;">Penarikan Koin ONE</h4>
+            <h4 style="font-size: 16px; margin-bottom: 5px;">ONE Coin Withdrawal</h4>
             <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px;">
-              Total Saldo Anda: <b style="color: var(--primary);"><span id="wd-one-bal">0</span> ONE</b>
+              Your Total Balance: <b style="color: var(--primary);"><span id="wd-one-bal">0</span> ONE</b>
             </p>
             
             <div class="info-box" style="background: #fff8f3; border-color: #f8d7c2; color: #b54900; text-align: left; font-size: 12px; line-height: 1.6;">
-              <i class="fas fa-bullhorn"></i> <b>Informasi Fase Listing:</b><br />
-              Penarikan <b>Koin ONE</b> saat ini belum dibuka dan akan otomatis diaktifkan setelah <b>Token Resmi Listing di DEX / CEX</b>.<br /><br />
-              Kumpulkan koin ONE Anda sebanyak-banyaknya sekarang melalui menu <b>Tasks</b> dan <b>Paket Investasi</b> sebelum listing dimulai!
+              <i class="fas fa-bullhorn"></i> <b>Listing Phase Notice:</b><br />
+              Withdrawals for <b>ONE Coin</b> are currently locked and will automatically activate once the <b>Token Officially Lists on DEX / CEX</b>.<br /><br />
+              Accumulate as many ONE coins as possible through <b>Tasks</b> and <b>Investment Packages</b> before listing begins!
             </div>
 
-            <button class="btn" style="background: #e2e5e9; color: #788292; cursor: not-allowed; border: 1px solid #d1d5db;" onclick="alert('Penarikan Koin ONE saat ini belum tersedia dan akan dibuka setelah token resmi Listing!')">
-              <i class="fas fa-lock"></i> Tersedia Setelah Listing
+            <button class="btn" style="background: #e2e5e9; color: #788292; cursor: not-allowed; border: 1px solid #d1d5db;" onclick="alert('ONE Coin withdrawals are currently locked and will unlock immediately upon official token listing!')">
+              <i class="fas fa-lock"></i> Available After Listing
             </button>
+          </div>
+
+          <!-- 2. UNLOCKED PHASE (ACTIVATED BY ADMIN SWITCH IN FIREBASE) -->
+          <div id="one-listed-view" style="display: none;">
+            <div class="info-box" style="background: #eafaf1; color: #155724; border-color: #c3e6cb;">
+              <b><i class="fas fa-check-circle"></i> Official Listing is Live!</b><br />
+              ONE Coin is officially listed. You can now withdraw your ONE Coins directly to your personal crypto wallet.
+            </div>
+
+            <div class="card">
+              <p style="font-size: 13px; margin-bottom: 10px;">Available Balance: <b style="color: var(--primary);"><span id="wd-one-bal-active">0</span> ONE</b></p>
+              
+              <label style="font-size: 11px; color: var(--text-gray);">Recipient ONE Wallet Address</label>
+              <input type="text" id="wd-one-address" placeholder="Enter recipient wallet address..." />
+
+              <label style="font-size: 11px; color: var(--text-gray);">Withdrawal Amount (Min. 10 ONE)</label>
+              <input type="number" id="wd-one-amt" placeholder="10" />
+
+              <button class="btn" onclick="handleWithdrawOneAction()">Withdraw ONE Now</button>
+            </div>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!-- MODAL POPUP DEPOSIT INVESTASI -->
+    <!-- MODAL POPUP INVESTMENT DEPOSIT -->
     <div id="invest-modal" class="modal-overlay">
       <div class="modal-box">
-        <h3 id="modal-title">Paket Investasi</h3>
+        <h3 id="modal-title">Investment Package</h3>
         <div style="background:#fff8f3; border:1px solid #f8d7c2; color:#b54900; padding:10px; border-radius:10px; margin:12px 0; font-size:12px; text-align:left;">
-          <b>Detail Simulasi Pendapatan:</b><br />
-          • Biaya Paket: <b id="sim-pkg-cost">$1.00 USDT</b><br />
-          • Profit Tambahan: <b id="sim-pkg-bonus">+$0.10 / hari</b><br />
-          • Bonus Koin ONE: <b id="sim-pkg-one">+100 ONE</b><br />
-          • Estimasi Baru: <b id="sim-pkg-total">$0.11 / hari</b>
+          <b>Income Simulation Details:</b><br />
+          • Package Cost: <b id="sim-pkg-cost">$1.00 USDT</b><br />
+          • Extra Profit: <b id="sim-pkg-bonus">+$0.10 / day</b><br />
+          • Bonus ONE Coins: <b id="sim-pkg-one">+100 ONE</b><br />
+          • New Daily Rate: <b id="sim-pkg-total">$0.11 / day</b>
         </div>
 
         <p style="font-size: 12px; color: var(--text-gray); text-align: left;">
-          Transfer persis sejumlah paket di atas ke alamat (BEP20):
+          Send the exact package amount above to the official address (BEP20):
         </p>
         <div class="address-box">0x541160E598Fd2d51c21aA977beb674bb207bFaB8</div>
         <button class="btn btn-outline" style="padding:8px; font-size:12px; margin-bottom: 15px;" onclick="copyAddr()">
-          <i class="fas fa-copy"></i> Salin Alamat Deposit
+          <i class="fas fa-copy"></i> Copy Deposit Address
         </button>
 
         <label style="font-size: 11px; color: var(--text-gray); display:block; text-align:left;">
-          <b>Alamat USDT Pengirim (Milik Anda):</b>
+          <b>Your Sender USDT Address (Used for payment):</b>
         </label>
-        <input type="text" id="sender-usdt-address" placeholder="Masukkan alamat dompet pengirim (0x...)" />
+        <input type="text" id="sender-usdt-address" placeholder="Enter your sender wallet address (0x...)" />
 
-        <button class="btn" onclick="submitDepositConfirmation()">Konfirmasi & Kirim Bukti</button>
-        <button class="btn" style="background:#e0e0e0; color:#333; margin-top:6px;" onclick="closeInvestModal()">Tutup</button>
+        <button class="btn" onclick="submitDepositConfirmation()">Confirm & Submit Deposit</button>
+        <button class="btn" style="background:#e0e0e0; color:#333; margin-top:6px;" onclick="closeInvestModal()">Close</button>
       </div>
     </div>
 
@@ -453,17 +470,17 @@
 
     <script>
       // ==========================================
-      // 1. KONFIGURASI FIREBASE & BOT
+      // 1. FIREBASE & BOT CONFIGURATION
       // ==========================================
       const firebaseConfig = {
-  apiKey: "AIzaSyCr-V3TxkQp4-Vmd7zFhqoLkfF8hAiDmzc",
-  authDomain: "onecoin-miner-bot.firebaseapp.com",
-  databaseURL: "https://onecoin-miner-bot-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "onecoin-miner-bot",
-  storageBucket: "onecoin-miner-bot.firebasestorage.app",
-  messagingSenderId: "51465173443",
-  appId: "1:51465173443:web:c61078967f58d1571ba576"
-};
+        apiKey: "AIzaSyYOUR_API_KEY",
+        authDomain: "your-app.firebaseapp.com",
+        databaseURL: "https://your-app-default-rtdb.firebaseio.com",
+        projectId: "your-app",
+        storageBucket: "your-app.appspot.com",
+        messagingSenderId: "123456789",
+        appId: "1:123456789:web:abcdef"
+      };
 
       const TG_BOT_USERNAME = "OnecoinMinerBot"; 
       const DEPOSIT_ADDRESS = "0x541160E598Fd2d51c21aA977beb674bb207bFaB8";
@@ -477,7 +494,7 @@
       }
 
       // ==========================================
-      // 2. IDENTITAS PENGGUNA TELEGRAM
+      // 2. TELEGRAM USER IDENTITY
       // ==========================================
       const tg = window.Telegram?.WebApp;
       if (tg) { tg.ready(); tg.expand(); }
@@ -503,10 +520,11 @@
         tasks: {}
       };
 
+      let isOneCoinListed = false; // Master Switch for Listing
       let selectedPkg = 1;
 
       // ==========================================
-      // 3. INISIALISASI & SINKRONISASI REALTIME
+      // 3. INITIALIZATION & REAL-TIME SYNC
       // ==========================================
       function initUser() {
         if (dbFirebase) {
@@ -533,6 +551,13 @@
             userState[snap.key] = snap.val();
             updateUI();
           });
+
+          // LISTING MASTER SWITCH: Listens directly to settings/isListed
+          dbFirebase.ref("settings/isListed").on("value", (snap) => {
+            isOneCoinListed = snap.val() === true;
+            updateListingStatusUI();
+          });
+
         } else {
           const local = localStorage.getItem("user_" + currentUid);
           if (local) userState = JSON.parse(local);
@@ -561,7 +586,7 @@
       }
 
       // ==========================================
-      // 4. PENARIKAN (TAB SWITCH & LOGIKA USDT)
+      // 4. WITHDRAWAL HANDLERS
       // ==========================================
       function switchWdTab(type) {
         if (type === 'usdt') {
@@ -574,21 +599,43 @@
           document.getElementById('wd-section-one').style.display = 'block';
           document.getElementById('tab-btn-usdt').classList.remove('active');
           document.getElementById('tab-btn-one').classList.add('active');
-          document.getElementById('wd-one-bal').innerText = Number(userState.oneCoin) || 0;
+          updateListingStatusUI();
+        }
+      }
+
+      function updateListingStatusUI() {
+        const preView = document.getElementById("one-prelisting-view");
+        const actView = document.getElementById("one-listed-view");
+        const tag = document.getElementById("badge-listing-tag");
+
+        if (isOneCoinListed) {
+          if (preView) preView.style.display = "none";
+          if (actView) actView.style.display = "block";
+          if (tag) {
+            tag.style.background = "#28a745";
+            tag.innerText = "OPEN";
+          }
+        } else {
+          if (preView) preView.style.display = "block";
+          if (actView) actView.style.display = "none";
+          if (tag) {
+            tag.style.background = "#dc3545";
+            tag.innerText = "LISTING";
+          }
         }
       }
 
       function handleWithdrawAction() {
         if (!userState.withdrawUnlocked) {
-          return alert("PENARIKAN TERKUNCI:\n\nPenarikan akun Anda saat ini dalam status TERKUNCI. Silakan lakukan deposit USDT dan tunggu persetujuan (ACC) dari admin untuk membuka penarikan.");
+          return alert("WITHDRAWAL LOCKED:\n\nYour withdrawal is currently LOCKED. Please deposit USDT and wait for admin approval to unlock withdrawals.");
         }
 
         const addr = document.getElementById("wd-address").value.trim();
         const amt = parseFloat(document.getElementById("wd-amt").value);
 
-        if (!addr || addr.length < 20) return alert("Masukkan alamat dompet USDT BEP20 yang valid!");
-        if (isNaN(amt) || amt < 0.05) return alert("Minimal penarikan adalah $0.05 USDT!");
-        if (userState.balance < amt) return alert("Saldo Anda tidak mencukupi!");
+        if (!addr || addr.length < 20) return alert("Please enter a valid USDT BEP20 address!");
+        if (isNaN(amt) || amt < 0.05) return alert("Minimum withdrawal is $0.05 USDT!");
+        if (userState.balance < amt) return alert("Insufficient balance!");
 
         userState.balance -= amt;
         saveUserState();
@@ -601,72 +648,71 @@
           amount: amt,
           currency: "USDT",
           status: "pending",
-          refunded: false,
           timestamp: Date.now()
         };
 
-        if (dbFirebase) {
-          dbFirebase.ref("withdrawals").push(wdData);
-        } else {
-          let hist = JSON.parse(localStorage.getItem("wd_hist_" + currentUid) || "[]");
-          hist.unshift(wdData);
-          localStorage.setItem("wd_hist_" + currentUid, JSON.stringify(hist));
-          renderHistory(hist);
-        }
+        if (dbFirebase) dbFirebase.ref("withdrawals").push(wdData);
 
-        alert("Permintaan penarikan $" + amt.toFixed(2) + " USDT berhasil dikirim! Menunggu konfirmasi admin.");
+        alert("Withdrawal request of $" + amt.toFixed(2) + " USDT submitted successfully! Pending admin confirmation.");
         document.getElementById("wd-amt").value = "";
+      }
+
+      function handleWithdrawOneAction() {
+        const addr = document.getElementById("wd-one-address").value.trim();
+        const amt = parseFloat(document.getElementById("wd-one-amt").value);
+
+        if (!addr || addr.length < 15) return alert("Please enter a valid ONE Coin wallet address!");
+        if (isNaN(amt) || amt < 10) return alert("Minimum withdrawal is 10 ONE Coins!");
+        if ((userState.oneCoin || 0) < amt) return alert("Insufficient ONE Coin balance!");
+
+        userState.oneCoin -= amt;
+        saveUserState();
+        updateUI();
+
+        const wdData = {
+          uid: currentUid,
+          username: userState.username,
+          address: addr,
+          amount: amt,
+          currency: "ONE",
+          status: "pending",
+          timestamp: Date.now()
+        };
+
+        if (dbFirebase) dbFirebase.ref("withdrawals").push(wdData);
+
+        alert("Withdrawal request of " + amt + " ONE Coins submitted successfully!");
+        document.getElementById("wd-one-amt").value = "";
       }
 
       function listenWithdrawals() {
         if (!dbFirebase) return;
         const wdRef = dbFirebase.ref("withdrawals").orderByChild("uid").equalTo(currentUid);
 
-        wdRef.on("child_changed", (snap) => handleRefundCheck(snap.key, snap.val()));
         wdRef.on("value", (snap) => {
           const list = [];
           snap.forEach((child) => {
-            const item = child.val();
-            handleRefundCheck(child.key, item);
-            list.unshift(item);
+            list.unshift(child.val());
           });
           renderHistory(list);
         });
       }
 
-      function handleRefundCheck(key, item) {
-        if (item.status === "rejected" && !item.refunded) {
-          const refundAmount = Number(item.amount) || 0;
-          userState.balance += refundAmount;
-          dbFirebase.ref("withdrawals/" + key).update({ refunded: true });
-          saveUserState();
-          updateUI();
-          alert(`PEMBERITAHUAN:\nPenarikan $${refundAmount.toFixed(2)} USDT DITOLAK oleh admin. Saldo telah dikembalikan secara real-time.`);
-        }
-      }
-
-      // =========================================================================
-      // MENAMPILKAN RIWAYAT PENARIKAN (JUMLAH, ALAMAT, TANGGAL & STATUS REALTIME)
-      // =========================================================================
       function renderHistory(list) {
         const container = document.getElementById("history-list");
         if (!list || list.length === 0) {
-          container.innerHTML = `<p style="text-align: center; color: var(--text-gray); font-size: 12px; padding: 10px;">Belum ada riwayat transaksi.</p>`;
+          container.innerHTML = `<p style="text-align: center; color: var(--text-gray); font-size: 12px; padding: 10px;">No transaction history yet.</p>`;
           return;
         }
 
         container.innerHTML = list.map(item => {
-          // Format Alamat USDT (Disingkat 8 depan + 6 belakang)
           const addr = item.address || "-";
           const shortAddr = addr.length > 20 ? (addr.slice(0, 8) + "..." + addr.slice(-6)) : addr;
-
-          // Format Tanggal & Jam
-          const dateStr = item.timestamp ? new Date(item.timestamp).toLocaleString("id-ID", {
+          const dateStr = item.timestamp ? new Date(item.timestamp).toLocaleString("en-US", {
             dateStyle: "short",
             timeStyle: "short"
           }) : "-";
 
-          // Status Badge
           let statusBadge = "";
           const currentStatus = (item.status || "pending").toLowerCase();
 
@@ -684,10 +730,12 @@
             </span>`;
           }
 
+          const currencyLabel = item.currency === "ONE" ? `${item.amount} ONE` : `$${Number(item.amount).toFixed(2)} USDT`;
+
           return `
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
               <div>
-                <b style="font-size: 14px; color: var(--text-main);">$${Number(item.amount).toFixed(2)} USDT</b>
+                <b style="font-size: 14px; color: var(--text-main);">${currencyLabel}</b>
                 <div style="font-size: 11px; color: var(--text-gray); margin-top: 3px; font-family: monospace;">
                   <i class="fas fa-wallet" style="color: var(--primary); font-size: 10px;"></i> ${shortAddr}
                 </div>
@@ -704,7 +752,7 @@
       }
 
       // ==========================================
-      // 5. INVESTASI & DEPOSIT
+      // 5. INVESTMENT & DEPOSIT
       // ==========================================
       function openInvestModal(pkgAmount) {
         selectedPkg = pkgAmount;
@@ -712,11 +760,11 @@
         const bonusOne = pkgAmount * 100;
         const totalNewRate = (Number(userState.dailyRate) || 0.01) + bonusDaily;
 
-        document.getElementById("modal-title").innerText = `Paket Investasi: $${pkgAmount} USDT`;
+        document.getElementById("modal-title").innerText = `Investment Package: $${pkgAmount} USDT`;
         document.getElementById("sim-pkg-cost").innerText = `$${pkgAmount}.00 USDT`;
-        document.getElementById("sim-pkg-bonus").innerText = `+$${bonusDaily.toFixed(2)} / hari`;
+        document.getElementById("sim-pkg-bonus").innerText = `+$${bonusDaily.toFixed(2)} / day`;
         document.getElementById("sim-pkg-one").innerText = `+${bonusOne} ONE`;
-        document.getElementById("sim-pkg-total").innerText = `$${totalNewRate.toFixed(2)} / hari`;
+        document.getElementById("sim-pkg-total").innerText = `$${totalNewRate.toFixed(2)} / day`;
         document.getElementById("sender-usdt-address").value = "";
         document.getElementById("invest-modal").style.display = "flex";
       }
@@ -728,7 +776,7 @@
       function submitDepositConfirmation() {
         const senderAddr = document.getElementById("sender-usdt-address").value.trim();
         if (!senderAddr || senderAddr.length < 20) {
-          return alert("Harap masukkan alamat dompet USDT Anda dengan benar!");
+          return alert("Please enter your sender wallet address correctly!");
         }
 
         const depositData = {
@@ -743,11 +791,9 @@
           timestamp: Date.now()
         };
 
-        if (dbFirebase) {
-          dbFirebase.ref("deposits").push(depositData);
-        }
+        if (dbFirebase) dbFirebase.ref("deposits").push(depositData);
 
-        alert(`Konfirmasi terkirim!\n\nAdmin akan memeriksa pembayaran dari:\n${senderAddr}\n\nSetelah di-ACC oleh Admin, status penarikan Anda akan menjadi TERBUKA dan tidak terkunci.`);
+        alert(`Deposit submitted!\n\nAdmin will verify the transaction from:\n${senderAddr}\n\nOnce approved, your withdrawal will be UNLOCKED and profits updated.`);
         closeInvestModal();
       }
 
@@ -761,11 +807,11 @@
       }
 
       // ==========================================
-      // 6. LOGIKA TUGAS (BERUBAH JADI SELESAI)
+      // 6. TASK LOGIC
       // ==========================================
       function doTask(id, url) {
         if (userState.tasks && userState.tasks[id]) {
-          return alert("Tugas ini sudah selesai!");
+          return alert("This task is already completed!");
         }
 
         window.open(url, "_blank");
@@ -778,7 +824,7 @@
           saveUserState();
           updateUI();
           
-          alert("Selamat! Tugas berhasil diselesaikan. Anda mendapatkan +10 Koin ONE!");
+          alert("Congratulations! Task completed. You earned +10 ONE Coins!");
         }, 2000);
       }
 
@@ -795,7 +841,7 @@
             if (userState.tasks && userState.tasks[item.id]) {
               btn.className = "btn btn-done";
               btn.disabled = true;
-              btn.innerHTML = '<i class="fas fa-check"></i> Selesai';
+              btn.innerHTML = '<i class="fas fa-check"></i> Completed';
               btn.style.width = "auto";
               btn.style.margin = "0";
               btn.style.padding = "8px 15px";
@@ -803,7 +849,7 @@
             } else {
               btn.className = "btn";
               btn.disabled = false;
-              btn.innerHTML = 'Gabung';
+              btn.innerHTML = 'Join';
               btn.style.width = "auto";
               btn.style.margin = "0";
               btn.style.padding = "8px 15px";
@@ -814,7 +860,7 @@
       }
 
       // ==========================================
-      // 7. SISTEM REFERRAL (BONUS +10 KOIN ONE)
+      // 7. REFERRAL SYSTEM
       // ==========================================
       function recordReferral(inviterId) {
         if (!dbFirebase) return;
@@ -829,9 +875,9 @@
 
       function submitManualRef() {
         const inputId = document.getElementById("input-inviter-id").value.trim();
-        if (!inputId) return alert("Masukkan ID Pengundang!");
-        if (inputId === currentUid) return alert("Anda tidak dapat memasukkan ID Anda sendiri!");
-        if (userState.invitedBy) return alert("Anda sudah memiliki pengundang (ID: " + userState.invitedBy + ")");
+        if (!inputId) return alert("Please enter an Inviter ID!");
+        if (inputId === currentUid) return alert("You cannot enter your own ID!");
+        if (userState.invitedBy) return alert("You already have an inviter (ID: " + userState.invitedBy + ")");
 
         if (dbFirebase) {
           dbFirebase.ref("users/" + inputId).once("value", (snap) => {
@@ -843,22 +889,16 @@
               saveUserState();
               updateUI();
               
-              alert("Pengundang berhasil dikaitkan: #" + inputId + "\n\nSelamat! Anda mendapatkan bonus instan +10 Koin ONE!");
+              alert("Inviter linked successfully: #" + inputId + "\n\nCongratulations! You received an instant +10 ONE Coin bonus!");
             } else {
-              alert("ID Pengundang tidak ditemukan!");
+              alert("Inviter ID not found!");
             }
           });
-        } else {
-          userState.invitedBy = inputId;
-          userState.oneCoin = (Number(userState.oneCoin) || 0) + 10;
-          saveUserState();
-          updateUI();
-          alert("Pengundang berhasil dikaitkan!\nBonus +10 Koin ONE berhasil ditambahkan!");
         }
       }
 
       // ==========================================
-      // 8. SINKRONISASI TAMPILAN (UI)
+      // 8. UI SYNCHRONIZATION
       // ==========================================
       function updateUI() {
         document.getElementById("bal-main").innerText = userState.balance.toFixed(6);
@@ -867,17 +907,18 @@
         document.getElementById("prof-id").innerText = userState.uid;
         document.getElementById("prof-avatar").src = userState.photo_url;
 
-        // Saldo Profile & Tab Withdraw
         document.getElementById("prof-bal-usdt").innerText = userState.balance.toFixed(4);
         document.getElementById("prof-bal-one").innerText = Number(userState.oneCoin) || 0;
+        
         const wdOneBal = document.getElementById("wd-one-bal");
         if (wdOneBal) wdOneBal.innerText = Number(userState.oneCoin) || 0;
+        const wdOneBalAct = document.getElementById("wd-one-bal-active");
+        if (wdOneBalAct) wdOneBalAct.innerText = Number(userState.oneCoin) || 0;
 
         const refLink = `https://t.me/${TG_BOT_USERNAME}/app?startapp=${userState.uid}`;
         document.getElementById("ref-link").innerText = refLink;
         document.getElementById("ref-count").innerText = userState.refCount || 0;
 
-        // KONTROL STATUS PENARIKAN (TERKUNCI VS TERBUKA SETELAH DI-ACC ADMIN)
         if (userState.withdrawUnlocked === true) {
           document.getElementById("wd-locked-box").style.display = "none";
           document.getElementById("wd-unlocked-box").style.display = "block";
@@ -891,7 +932,7 @@
         if (userState.invitedBy) {
           const btn = document.getElementById("btn-submit-ref");
           btn.disabled = true;
-          btn.innerText = "Terkait: #" + userState.invitedBy + " (+10 ONE Diklaim)";
+          btn.innerText = "Linked: #" + userState.invitedBy + " (+10 ONE Claimed)";
           btn.style.opacity = "0.7";
         }
       }
@@ -906,12 +947,12 @@
 
       function copyRef() {
         navigator.clipboard.writeText(document.getElementById("ref-link").innerText);
-        showToast("Link Disalin!");
+        showToast("Link Copied!");
       }
 
       function copyAddr() {
         navigator.clipboard.writeText(DEPOSIT_ADDRESS);
-        showToast("Alamat Deposit Disalin!");
+        showToast("Address Copied!");
       }
 
       function showToast(text) {
