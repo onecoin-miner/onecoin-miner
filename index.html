@@ -7,8 +7,10 @@
     
     <!-- Telegram WebApp SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Google Fonts: Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Firebase SDK (Compat Version) -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
@@ -16,186 +18,492 @@
 
     <style>
       :root {
-          --primary: #dc6516; /* ONE Coin Orange */
-          --primary-gold: #f3ba2f;
-          --bg: #ffffff;
-          --text-main: #1a1d23;
-          --text-gray: #6c757d;
-          --success: #28a745;
-          --error: #dc3545;
-          --border: #eceef0;
+          --gold-primary: #f59e0b;
+          --gold-gradient: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+          --gold-glow: rgba(245, 158, 11, 0.45);
+          --bg-light: #eaedf2;
+          --dark-card: #0d1117;
+          --text-main: #0f172a;
+          --text-muted: #64748b;
+          --success: #22c55e;
+          --error: #ef4444;
       }
 
       * {
           margin: 0; padding: 0; box-sizing: border-box;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-family: 'Inter', -apple-system, sans-serif;
           -webkit-tap-highlight-color: transparent;
       }
 
       body {
-          background-color: var(--bg);
+          background: #eef2f6;
           color: var(--text-main);
           height: 100vh;
           overflow: hidden;
           display: flex;
           flex-direction: column;
+          position: relative;
+      }
+
+      /* Background Clean Luxury Radiant Sesuai Foto */
+      body::before {
+          content: "";
+          position: fixed;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background: 
+            radial-gradient(circle at 50% 12%, rgba(245, 158, 11, 0.22) 0%, rgba(248, 250, 252, 0.8) 42%, #e2e8f0 100%);
+          z-index: -2;
       }
 
       #app {
           flex: 1;
           overflow-y: auto;
-          padding: 20px;
-          padding-bottom: 110px;
+          padding: 16px 18px 120px;
       }
 
-      .page { display: none; animation: fadeIn 0.4s ease; }
+      .page { display: none; animation: fadeIn 0.35s ease; }
       .page.active { display: block; }
-      @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-      .mining-section { text-align: center; padding: 15px 0 10px; }
-      
-      .coin-svg-main {
-          width: 130px;
-          height: 130px;
-          margin: 0 auto 15px;
-          display: block;
-          filter: drop-shadow(0 0 15px rgba(220, 101, 22, 0.6));
-          animation: pulseGlow 2.5s infinite alternate ease-in-out;
-      }
-
-      @keyframes pulseGlow {
-          from { transform: scale(1); filter: drop-shadow(0 0 10px rgba(220, 101, 22, 0.4)); }
-          to { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(220, 101, 22, 0.8)); }
-      }
-
-      .balance-card {
-          background: #f8f9fb;
-          padding: 20px;
-          border-radius: 20px;
-          border: 1px solid var(--border);
+      /* ========================================================
+         1. HERO COIN (PERSIS SEPERTI FOTO)
+      ======================================================== */
+      .hero-section {
           text-align: center;
+          padding: 8px 0 16px;
+          position: relative;
+      }
+
+      .coin-wrapper {
+          position: relative;
+          width: 160px;
+          margin: 0 auto 12px;
+      }
+
+      /* Efek Halo Cahaya Emas di Belakang Koin */
+      .coin-wrapper::before {
+          content: "";
+          position: absolute;
+          top: 50%; left: 50%;
+          transform: translate(-50%, -50%);
+          width: 170px; height: 170px;
+          background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
+          border-radius: 50%;
+          z-index: -1;
+      }
+
+      .coin-3d {
+          width: 135px; height: 135px;
+          margin: 0 auto;
+          display: block;
+          filter: drop-shadow(0 14px 22px rgba(217, 119, 6, 0.38));
+          animation: floatCoin 3s infinite alternate ease-in-out;
+      }
+
+      @keyframes floatCoin {
+          from { transform: translateY(0px) scale(1); }
+          to { transform: translateY(-5px) scale(1.02); }
+      }
+
+      .brand-title {
+          font-family: 'Outfit', sans-serif;
+          font-size: 26px;
+          font-weight: 900;
+          letter-spacing: -0.5px;
+          color: #0f172a;
+      }
+      .brand-title span {
+          color: #f59e0b;
+      }
+
+      .brand-sub {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          color: #475569;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          margin-top: 4px;
+      }
+      .brand-sub::before, .brand-sub::after {
+          content: "";
+          width: 28px; height: 1.5px;
+          background: #cbd5e1;
+      }
+
+      /* ========================================================
+         2. BALANCE CARD (SESUAI FOTO)
+      ======================================================== */
+      .balance-dark-card {
+          background: linear-gradient(180deg, #131722 0%, #0a0d14 100%);
+          border-radius: 26px;
+          padding: 16px 18px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          position: relative;
+          border: 1.5px solid #f59e0b;
+          box-shadow: 
+              0 14px 35px rgba(0, 0, 0, 0.35),
+              0 0 25px rgba(245, 158, 11, 0.35),
+              inset 0 1px 1px rgba(255, 255, 255, 0.2);
+          margin: 16px 0 18px;
+          overflow: hidden;
+      }
+
+      /* Ikon Awan Emas */
+      .balance-left-icon {
+          width: 54px; height: 54px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #2d3748 0%, #111827 100%);
+          border: 1.5px solid rgba(255, 215, 0, 0.6);
+          display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+          flex-shrink: 0;
+      }
+      .balance-left-icon i {
+          color: #fef08a;
+          font-size: 24px;
+          filter: drop-shadow(0 0 8px #f59e0b);
+      }
+
+      .balance-center-info {
+          flex: 1;
+          padding: 0 12px;
+          min-width: 0;
+      }
+      .balance-label {
+          color: #94a3b8;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.8px;
+          text-transform: uppercase;
+          white-space: nowrap;
+      }
+      .balance-value {
+          color: #ffffff;
+          font-size: 27px;
+          font-weight: 900;
+          letter-spacing: -0.5px;
+          margin: 2px 0;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+          white-space: nowrap;
+      }
+
+      /* Teks Daily Profit Sejajar */
+      .balance-rate {
+          color: #22c55e;
+          font-size: 11.5px;
+          font-weight: 800;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          white-space: nowrap;
+          text-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+      }
+
+      /* Grafik Batang Emas */
+      .chart-right-icon {
+          width: 58px; height: 52px;
+          display: flex;
+          align-items: flex-end;
+          gap: 3.5px;
+          position: relative;
+          flex-shrink: 0;
+      }
+      .chart-bar {
+          flex: 1;
+          background: linear-gradient(180deg, #ffd700 0%, #d97706 100%);
+          border-radius: 3px 3px 0 0;
+          box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+      }
+      .b1 { height: 25%; }
+      .b2 { height: 42%; }
+      .b3 { height: 60%; }
+      .b4 { height: 80%; }
+      .b5 { height: 100%; }
+
+      /* ========================================================
+         3. INVESTMENT CARD (SESUAI FOTO)
+      ======================================================== */
+      .invest-glass-card {
+          background: #ffffff;
+          border-radius: 28px;
+          padding: 20px 16px;
+          box-shadow: 0 16px 35px rgba(0, 0, 0, 0.05);
+          border: 1px solid #ffffff;
           margin-bottom: 20px;
       }
 
-      .balance-amount { font-size: 34px; font-weight: 900; color: var(--text-main); letter-spacing: -1px; }
-      .mining-rate { color: var(--success); font-size: 13px; font-weight: 700; margin-top: 5px; }
+      .invest-header {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-bottom: 16px;
+      }
+      .gift-icon-3d {
+          width: 48px; height: 48px;
+          background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+          border-radius: 14px;
+          display: flex; align-items: center; justify-content: center;
+          color: #ffffff;
+          font-size: 24px;
+          box-shadow: 0 6px 14px rgba(217, 119, 6, 0.35);
+          flex-shrink: 0;
+      }
+      .invest-title-text h4 {
+          font-size: 15px;
+          font-weight: 800;
+          color: #0f172a;
+          line-height: 1.25;
+      }
+      .invest-title-text p {
+          font-size: 11px;
+          color: #64748b;
+          font-weight: 600;
+          margin-top: 2px;
+      }
 
-      .nav-bar {
+      /* 10 Kotak Paket Kristal Putih */
+      .package-glass-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 8px;
+      }
+      .glass-pkg-item {
+          background: #ffffff;
+          border: 1.5px solid #f1f5f9;
+          border-radius: 16px;
+          padding: 10px 4px;
+          text-align: center;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+          transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .glass-pkg-item:active {
+          transform: scale(0.92);
+          background: #fffbeb;
+      }
+      .glass-pkg-item b {
+          display: block;
+          font-family: 'Outfit', sans-serif;
+          font-size: 19px;
+          font-weight: 900;
+          color: #d97706;
+          letter-spacing: -0.5px;
+      }
+      .glass-pkg-item small {
+          display: block;
+          font-size: 9px;
+          font-weight: 800;
+          color: #0f172a;
+          margin-top: 2px;
+      }
+
+      /* ========================================================
+         4. BOTTOM NAVIGATION BAR (SESUAI FOTO)
+      ======================================================== */
+      .nav-wrapper {
           position: fixed;
-          bottom: 0; width: 100%; max-width: 600px;
-          background: rgba(255,255,255,0.95);
-          backdrop-filter: blur(10px);
-          display: flex; justify-content: space-around;
-          padding: 12px 0 25px;
-          border-top: 1px solid var(--border);
+          bottom: 16px;
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+          padding: 0 16px;
           z-index: 1000;
+          pointer-events: none;
       }
 
-      .nav-item {
-          text-align: center; color: var(--text-gray);
-          font-size: 11px; cursor: pointer; transition: 0.3s; flex: 1;
+      .nav-dark-capsule {
+          pointer-events: auto;
+          background: linear-gradient(180deg, #1a1e28 0%, #0d1017 100%);
+          border-radius: 50px;
+          padding: 6px 8px;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          border: 1.5px solid #f59e0b;
+          box-shadow: 
+              0 14px 35px rgba(0, 0, 0, 0.45),
+              0 0 20px rgba(245, 158, 11, 0.35);
       }
 
-      .nav-item.active { color: var(--primary); font-weight: 800; }
-      .nav-item i { font-size: 20px; display: block; margin-bottom: 4px; }
+      .nav-tab-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 14px;
+          border-radius: 40px;
+          cursor: pointer;
+          color: #94a3b8;
+          font-size: 19px;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          user-select: none;
+      }
 
-      .card { background: #f8f9fb; border-radius: 16px; padding: 18px; margin-bottom: 15px; border: 1px solid var(--border); }
-      
+      .nav-tab-item .tab-text {
+          display: none;
+          font-size: 13px;
+          font-weight: 800;
+          color: #ffffff;
+      }
+
+      /* Tab Home Aktif */
+      .nav-tab-item.active {
+          background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+          color: #ffffff;
+          padding: 10px 18px;
+          box-shadow: 0 0 16px rgba(245, 158, 11, 0.65);
+      }
+      .nav-tab-item.active .tab-text {
+          display: inline-block;
+      }
+      .nav-tab-item.active i {
+          color: #ffffff;
+      }
+
+      /* Tombol Profil Kanan */
+      .nav-profile-button {
+          pointer-events: auto;
+          width: 52px; height: 52px;
+          border-radius: 50%;
+          background: linear-gradient(180deg, #1a1e28 0%, #0d1017 100%);
+          border: 1.5px solid #f59e0b;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 20px;
+          cursor: pointer;
+          box-shadow: 
+              0 14px 30px rgba(0, 0, 0, 0.4),
+              0 0 20px rgba(245, 158, 11, 0.35);
+          transition: all 0.25s ease;
+      }
+      .nav-profile-button.active {
+          background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+          box-shadow: 0 0 22px rgba(245, 158, 11, 0.8);
+      }
+      .nav-profile-button:active, .nav-tab-item:active {
+          transform: scale(0.92);
+      }
+
+      /* Komponen Pendukung */
+      .card-theme {
+          background: #ffffff;
+          border-radius: 20px;
+          padding: 18px;
+          box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+          margin-bottom: 14px;
+          border: 1px solid #f1f5f9;
+      }
+      .btn-gold {
+          background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+          color: #ffffff;
+          border: none;
+          padding: 12px;
+          border-radius: 14px;
+          font-weight: 800;
+          font-size: 14px;
+          width: 100%;
+          cursor: pointer;
+          box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
+          transition: 0.2s;
+          margin-top: 10px;
+      }
+      .btn-gold:active { transform: scale(0.96); }
+      .btn-outline-gold {
+          background: transparent;
+          border: 1.5px solid #d97706;
+          color: #b45309;
+          font-weight: 800;
+      }
+      .btn-done {
+          background: #e2e8f0 !important;
+          color: #64748b !important;
+          cursor: not-allowed;
+          box-shadow: none !important;
+      }
+
       .badge-verified {
           display: inline-flex; align-items: center; gap: 4px;
-          background: linear-gradient(45deg, #d86111, #f3ba2f);
+          background: linear-gradient(45deg, #d86111, #f59e0b);
           color: #fff; padding: 4px 12px; border-radius: 50px;
           font-size: 10px; font-weight: 800;
       }
 
-      .btn {
-          background: var(--primary); color: #fff; border: none;
-          padding: 12px; border-radius: 12px; font-weight: 800; width: 100%;
-          cursor: pointer; transition: 0.2s; margin-top: 10px;
-      }
-      .btn:active { transform: scale(0.97); opacity: 0.8; }
-      .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
-      
-      .btn-done {
-          background: #e2e8f0 !important;
-          color: #64748b !important;
-          border: 1px solid #cbd5e1 !important;
-          cursor: not-allowed !important;
-          opacity: 0.85;
-      }
-
       .warning-box {
-          background: #fff5f5; color: var(--error); padding: 15px;
-          border-radius: 12px; font-size: 12px; margin-bottom: 20px;
+          background: #fff5f5; color: var(--error); padding: 14px;
+          border-radius: 14px; font-size: 12px; margin-bottom: 16px;
           border: 1px solid #ffe6e6; font-weight: 600; line-height: 1.5;
       }
 
       .info-box {
-          background: #eafaf1; color: #155724; padding: 12px;
-          border-radius: 12px; font-size: 12px; margin-bottom: 15px;
-          border: 1px solid #c3e6cb; font-weight: 600;
+          background: #f0fdf4; color: #166534; padding: 14px;
+          border-radius: 14px; font-size: 12px; margin-bottom: 16px;
+          border: 1px solid #bbf7d0; font-weight: 600;
       }
 
       .address-box {
-          background: #fff; padding: 10px; border-radius: 8px;
+          background: #ffffff; padding: 10px; border-radius: 10px;
           font-family: monospace; font-size: 11px; word-break: break-all;
-          border: 1px solid var(--border); margin: 8px 0; color: #333;
+          border: 1px solid #cbd5e1; margin: 8px 0; color: #334155;
       }
-
-      .package-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 15px; }
-      .pkg-item {
-          background: #fff; border: 1px solid var(--border);
-          padding: 10px 2px; border-radius: 10px; text-align: center; cursor: pointer;
-          transition: transform 0.2s;
-      }
-      .pkg-item:active { transform: scale(0.95); }
-      .pkg-item b { display: block; font-size: 14px; color: var(--primary); }
-      .pkg-item small { font-size: 8px; text-transform: uppercase; color: var(--text-gray); }
 
       input {
-          width: 100%; background: #fff; border: 1px solid var(--border);
-          padding: 12px; border-radius: 10px; margin: 8px 0; outline: none;
+          width: 100%; background: #ffffff; border: 1.5px solid #cbd5e1;
+          padding: 12px; border-radius: 12px; margin: 8px 0; outline: none;
+          font-size: 13px; font-weight: 600;
       }
 
       .avatar-img {
           width: 75px; height: 75px; border-radius: 50%;
-          object-fit: cover; border: 2px solid var(--primary);
+          object-fit: cover; border: 2.5px solid #f59e0b;
           margin: 0 auto 10px; display: block;
+          box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
       }
 
-      .wd-tab-container {
-          display: flex; gap: 10px; margin-bottom: 15px;
-      }
+      .wd-tab-container { display: flex; gap: 10px; margin-bottom: 15px; }
       .wd-tab-btn {
-          flex: 1; padding: 12px 8px; border-radius: 12px; border: 1px solid var(--border);
-          background: #f8f9fb; font-weight: 800; font-size: 13px; cursor: pointer;
-          color: var(--text-gray); transition: 0.2s; text-align: center;
+          flex: 1; padding: 12px 8px; border-radius: 14px; border: 1px solid #cbd5e1;
+          background: #ffffff; font-weight: 800; font-size: 13px; cursor: pointer;
+          color: var(--text-muted); transition: 0.2s; text-align: center;
       }
       .wd-tab-btn.active {
-          background: #fff; border-color: var(--primary); color: var(--primary);
-          box-shadow: 0 4px 10px rgba(220, 101, 22, 0.15);
+          background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+          color: #ffffff; border-color: transparent;
+          box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
       }
       .badge-listing {
-          background: #dc3545; color: #fff; font-size: 9px; padding: 2px 6px;
+          background: #ef4444; color: #fff; font-size: 9px; padding: 2px 6px;
           border-radius: 8px; margin-left: 4px; font-weight: 800; text-transform: uppercase;
       }
 
       .modal-overlay {
           position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-          background: rgba(0, 0, 0, 0.6); display: none;
-          justify-content: center; align-items: center; z-index: 10000;
+          background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px);
+          display: none; justify-content: center; align-items: center; z-index: 10000;
           padding: 20px;
       }
       .modal-box {
-          background: #fff; width: 100%; max-width: 400px;
-          border-radius: 20px; padding: 20px; text-align: center;
-          animation: fadeIn 0.3s ease;
+          background: #ffffff; width: 100%; max-width: 400px;
+          border-radius: 24px; padding: 22px; text-align: center;
+          box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+          border: 1.5px solid rgba(255, 215, 0, 0.5);
       }
 
       #toast {
           position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-          background: #333; color: #fff; padding: 10px 25px; border-radius: 50px;
-          font-size: 13px; font-weight: 600; display: none; z-index: 10001;
+          background: #111827; color: #ffd700; padding: 10px 24px; border-radius: 50px;
+          font-size: 13px; font-weight: 800; display: none; z-index: 10001;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+          border: 1px solid rgba(255, 215, 0, 0.4);
       }
     </style>
   </head>
@@ -203,143 +511,132 @@
     <div id="toast">Copied!</div>
 
     <div id="app">
-      <!-- PAGE 1: HOME -->
+      <!-- ==========================================
+           PAGE 1: HOME (PERSIS FOTO TERBARU)
+      ========================================== -->
       <div id="page-home" class="page active">
-        <div class="mining-section">
-          <!-- ONE COIN SVG LOGO -->
-          <svg class="coin-svg-main" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="47" fill="#dc6516" stroke="#c0520b" stroke-width="2" />
-            <circle cx="50" cy="50" r="37" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-dasharray="6.5, 4.5" />
-            <path d="M 37 49 L 51 36 L 58 36 L 58 68 L 47 68 L 47 48 L 41 53 Z" fill="#ffffff" />
-          </svg>
-          <h2 style="font-weight: 900;">OnecoinMinerBot</h2>
-          <p style="color: var(--text-gray); font-size: 13px;">Automated Cloud Mining Active</p>
+        
+        <!-- HERO COIN -->
+        <div class="hero-section">
+          <div class="coin-wrapper">
+            <svg class="coin-3d" viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fffbeb" />
+                  <stop offset="35%" stop-color="#f59e0b" />
+                  <stop offset="70%" stop-color="#b45309" />
+                  <stop offset="100%" stop-color="#78350f" />
+                </linearGradient>
+                <linearGradient id="goldCenter" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fbbf24" />
+                  <stop offset="50%" stop-color="#d97706" />
+                  <stop offset="100%" stop-color="#92400e" />
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="48" fill="url(#goldRim)" />
+              <circle cx="50" cy="50" r="43" fill="url(#goldCenter)" stroke="#fef3c7" stroke-width="1.5" />
+              <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-dasharray="6.5, 4.5" />
+              <path d="M 37 49 L 51 36 L 58 36 L 58 68 L 47 68 L 47 48 L 41 53 Z" fill="#ffffff" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.25))" />
+            </svg>
+          </div>
+
+          <h2 class="brand-title">Onecoin<span>MinerBot</span></h2>
+          <div class="brand-sub">Automated Cloud Mining Active</div>
         </div>
 
-        <div class="balance-card">
-          <div style="color: var(--text-gray); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">
-            Withdrawable Mining Balance
+        <!-- BALANCE CARD (IKON AWAN & TEKS SEJAJAR) -->
+        <div class="balance-dark-card">
+          <div class="balance-left-icon">
+            <i class="fas fa-cloud"></i>
           </div>
-          <div class="balance-amount">$<span id="bal-main">0.000000</span></div>
-          <div class="mining-rate">
-            <i class="fas fa-bolt"></i> Daily Profit: $<span id="rate-display">0.01</span> / 24h
+
+          <div class="balance-center-info">
+            <div class="balance-label">WITHDRAWABLE MINING BALANCE</div>
+            <div class="balance-value">$<span id="bal-main">0.000000</span></div>
+            <div class="balance-rate">
+              <i class="fas fa-bolt"></i>
+              <span>Daily Profit: $<span id="rate-display">0.50</span> / 24 hours</span>
+            </div>
+          </div>
+
+          <div class="chart-right-icon">
+            <div class="chart-bar b1"></div>
+            <div class="chart-bar b2"></div>
+            <div class="chart-bar b3"></div>
+            <div class="chart-bar b4"></div>
+            <div class="chart-bar b5"></div>
           </div>
         </div>
 
-        <div class="card">
-          <h4 style="font-size: 14px;">Investment Packages & Bonus ONE</h4>
-          <p style="font-size: 11px; color: var(--text-gray);">
-            Tap to boost daily profits and receive extra ONE Coin bonuses
-          </p>
-          <div class="package-grid" id="pkg-list"></div>
+        <!-- INVESTMENT CARD (10 KOTAK KRISTAL PUTIH) -->
+        <div class="invest-glass-card">
+          <div class="invest-header">
+            <div class="gift-icon-3d">
+              <i class="fas fa-gift"></i>
+            </div>
+            <div class="invest-title-text">
+              <h4>Investment Packages & Bonus ONE</h4>
+              <p>Invest to boost daily profits and receive extra ONE Coin bonuses</p>
+            </div>
+          </div>
+
+          <div class="package-glass-grid" id="pkg-list"></div>
         </div>
+
       </div>
 
-      <!-- PAGE 2: TASKS -->
+      <!-- ==========================================
+           PAGE 2: TASKS (REWARD: 100 ONE COIN)
+      ========================================== -->
       <div id="page-tasks" class="page">
-        <h3 style="margin-bottom: 10px;">Community Tasks</h3>
-        <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px;">
-          Join the official community channels below to earn <b style="color: var(--primary);">+10 ONE Coins</b> per task!
+        <h3 style="font-family:'Outfit',sans-serif; margin-bottom: 8px;">Community Tasks</h3>
+        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
+          Join the official community channels below to earn <b style="color: #b45309;">+100 ONE Coins</b> per task!
         </p>
 
-        <!-- TASK 1: Job -->
-        <div class="card">
+        <div class="card-theme">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <p style="font-weight: 700; font-size: 14px;">Like Tweet</p>
-              <small style="color: var(--primary); font-weight: 800;">Reward: +10 ONE</small>
+              <p style="font-weight: 800; font-size: 14px;">Join Durov Channel</p>
+              <small style="color: #d97706; font-weight: 800;">Reward: +100 ONE</small>
             </div>
-            <button id="btn-task-twt" class="btn" style="width: auto; margin:0; padding: 8px 15px; font-size: 12px;" onclick="doTask('twt', 'https://x.com/1CoinEverything/status/2121498737487024190?a=V1cluDM2PB3lDIQXDqk&s=20')">
+            <button id="btn-task-durov" class="btn-gold" style="width: auto; margin:0; padding: 8px 18px; font-size: 12px;" onclick="doTask('durov', 'https://t.me/durov')">
               Join
             </button>
           </div>
         </div>
 
-        <!-- TASK 2: Web Partners -->
-        <div class="card">
+        <div class="card-theme">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <p style="font-weight: 700; font-size: 14px;">Open Web</p>
-              <small style="color: var(--primary); font-weight: 800;">Reward: +10 ONE</small>
+              <p style="font-weight: 800; font-size: 14px;">Join Walt News Channel</p>
+              <small style="color: #d97706; font-weight: 800;">Reward: +100 ONE</small>
             </div>
-            <button id="btn-task-swp" class="btn" style="width: auto; margin:0; padding: 8px 15px; font-size: 12px;" onclick="doTask('swp', 'https://www.shinwells.com')">
+            <button id="btn-task-walt" class="btn-gold" style="width: auto; margin:0; padding: 8px 18px; font-size: 12px;" onclick="doTask('walt', 'https://t.me/walt_news')">
               Join
             </button>
           </div>
         </div>
 
-        <!-- TASK 3: 1COIN OFFICIAL -->
-        <div class="card">
+        <div class="card-theme">
           <div style="display: flex; justify-content: space-between; align-items: center;">
             <div>
-              <p style="font-weight: 700; font-size: 14px;">Join 1Coin Channel</p>
-              <small style="color: var(--primary); font-weight: 800;">Reward: +10 ONE</small>
+              <p style="font-weight: 800; font-size: 14px;">Join 1Coin Channel</p>
+              <small style="color: #d97706; font-weight: 800;">Reward: +100 ONE</small>
             </div>
-            <button id="btn-task-onecoin" class="btn" style="width: auto; margin:0; padding: 8px 15px; font-size: 12px;" onclick="doTask('onecoin', 'https://t.me/OneCoin_Channel')">
+            <button id="btn-task-onecoin2" class="btn-gold" style="width: auto; margin:0; padding: 8px 18px; font-size: 12px;" onclick="doTask('onecoin2', 'https://t.me/+0Ye7EgW07oBkNDg1')">
               Join
             </button>
           </div>
         </div>
       </div>
 
-      <!-- PAGE 3: PROFILE -->
-      <div id="page-profile" class="page">
-        <div class="card" style="text-align: center; background: #fff;">
-          <img id="prof-avatar" class="avatar-img" src="https://via.placeholder.com/150" alt="Avatar" />
-          <h3 id="prof-user">@User</h3>
-          <div class="badge-verified"><i class="fas fa-check-circle"></i> VERIFIED USER</div>
-          <p style="color: var(--text-gray); font-size: 12px; margin-top: 10px;">
-            Telegram UID: #<span id="prof-id">000000</span>
-          </p>
-        </div>
-
-        <!-- BALANCES IN PROFILE -->
-        <div class="card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;">
-          <div style="background: #fff; padding: 12px; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
-            <small style="color: var(--text-gray); font-size: 10px; font-weight: 700; text-transform: uppercase;">Mining Balance</small>
-            <div style="font-size: 15px; font-weight: 900; color: var(--text-main); margin-top: 5px;">
-              $<span id="prof-bal-usdt">0.0000</span>
-            </div>
-          </div>
-
-          <div style="background: #fff; padding: 12px; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
-            <small style="color: var(--text-gray); font-size: 10px; font-weight: 700; text-transform: uppercase;">ONE Coin Balance</small>
-            <div style="font-size: 15px; font-weight: 900; color: var(--primary); margin-top: 5px; display: flex; align-items: center; justify-content: center; gap: 5px;">
-              <svg viewBox="0 0 100 100" style="width: 18px; height: 18px;">
-                <circle cx="50" cy="50" r="47" fill="#dc6516" stroke="#c0520b" stroke-width="2" />
-                <circle cx="50" cy="50" r="37" fill="none" stroke="#ffffff" stroke-width="5" stroke-dasharray="6.5, 4.5" />
-                <path d="M 37 49 L 51 36 L 58 36 L 58 68 L 47 68 L 47 48 L 41 53 Z" fill="#ffffff" />
-              </svg>
-              <span id="prof-bal-one">0</span> ONE
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h4 style="margin-bottom: 8px; font-size: 14px;">Your Referral Link</h4>
-          <div class="address-box" id="ref-link">Loading referral link...</div>
-          <button class="btn btn-outline" style="height: 40px; font-size: 13px;" onclick="copyRef()">Copy Referral Link</button>
-          <div style="margin-top: 15px; font-size: 13px;">
-            Total Active Referrals: <span id="ref-count" style="font-weight: 800;">0</span> users
-          </div>
-        </div>
-
-        <!-- BIND INVITER CODE -->
-        <div class="card">
-          <h4 style="margin-bottom: 5px; font-size: 14px;">Enter Inviter ID</h4>
-          <p style="font-size: 11px; color: var(--text-gray); margin-bottom: 8px;">
-            Bind your inviter's ID to claim an instant bonus of <b style="color: var(--primary);">+10 ONE Coins</b>:
-          </p>
-          <input type="number" id="input-inviter-id" placeholder="e.g. 12345678" />
-          <button class="btn" id="btn-submit-ref" onclick="submitManualRef()">Bind Inviter (+10 ONE)</button>
-        </div>
-      </div>
-
-      <!-- PAGE 4: WITHDRAW -->
+      <!-- ==========================================
+           PAGE 3: WITHDRAW
+      ========================================== -->
       <div id="page-withdraw" class="page">
-        <h3 style="margin-bottom: 15px;">Withdrawal Center</h3>
+        <h3 style="font-family:'Outfit',sans-serif; margin-bottom: 15px;">Withdrawal Center</h3>
 
-        <!-- WITHDRAWAL TABS -->
         <div class="wd-tab-container">
           <button class="wd-tab-btn active" id="tab-btn-usdt" onclick="switchWdTab('usdt')">
             <i class="fas fa-dollar-sign"></i> USDT (Active)
@@ -349,141 +646,203 @@
           </button>
         </div>
 
-        <!-- =================== OPTION 1: USDT WITHDRAWAL =================== -->
         <div id="wd-section-usdt">
-          <div id="wd-locked-box" class="warning-box">
+          <div id="wd-locked-box" class="warning-box" style="display: none;">
             <b><i class="fas fa-lock"></i> USDT Withdrawal Locked</b><br />
-            Your withdrawal status is currently <b>LOCKED</b>. To unlock withdrawals, deposit a minimum of <b>$1 USDT (BEP20)</b> to the official address below and wait for Admin verification:
-            <div class="address-box" id="deposit-addr-display">0x78e939ece7ae70540291b9a30fd8601e58d2c4cb</div>
-            <button class="btn" style="background: #1a1d23; color: #fff; font-size: 11px; height: 38px; margin-top: 5px;" onclick="copyAddr()">
+            Your withdrawal status has been <b>LOCKED</b> by the Admin. To unlock withdrawals, please deposit a minimum of <b>$1 USDT (BEP20)</b> to the official address below and wait for Admin verification:
+            <div class="address-box" id="deposit-addr-display">0x541160E598Fd2d51c21aA977beb674bb207bFaB8</div>
+            <button class="btn-gold" style="font-size: 11px; height: 38px; margin-top: 5px;" onclick="copyAddr()">
               <i class="fas fa-copy"></i> Copy Deposit Address
             </button>
           </div>
 
-          <div id="wd-unlocked-box" class="info-box" style="display: none;">
-            <b><i class="fas fa-lock-open"></i> Withdrawal Unlocked & Active!</b><br />
-            Your deposit has been verified by the Admin. You can now withdraw your USDT balance anytime (Min. $0.05 USDT).
+          <div id="wd-unlocked-box" class="info-box" style="display: block;">
+            <b><i class="fas fa-check-circle"></i> Withdrawal System Active!</b><br />
+            You can withdraw your USDT balance directly to your BEP20 wallet (Min. $0.05 USDT).
           </div>
 
-          <div class="card">
-            <label style="font-size: 11px; color: var(--text-gray);">Recipient Wallet Address (USDT BEP20)</label>
+          <div class="card-theme">
+            <label style="font-size: 11px; color: var(--text-muted); font-weight: 700;">Recipient Wallet Address (USDT BEP20)</label>
             <input type="text" id="wd-address" placeholder="0x..." />
 
-            <label style="font-size: 11px; color: var(--text-gray);">Withdrawal Amount (Min. $0.05 USDT)</label>
+            <label style="font-size: 11px; color: var(--text-muted); font-weight: 700;">Withdrawal Amount (Min. $0.05 USDT)</label>
             <input type="number" id="wd-amt" placeholder="0.05" step="0.01" />
 
-            <button class="btn" onclick="handleWithdrawAction()">Withdraw USDT Now</button>
+            <button class="btn-gold" onclick="handleWithdrawAction()">Withdraw USDT Now</button>
           </div>
 
-          <div class="card">
+          <div class="card-theme">
             <h4 style="margin-bottom: 10px; font-size: 14px;">USDT Withdrawal History</h4>
             <div id="history-list"></div>
           </div>
         </div>
 
-        <!-- =================== OPTION 2: ONE COIN WITHDRAWAL =================== -->
         <div id="wd-section-one" style="display: none;">
-          <!-- 1. LOCKED PHASE (PRE-LISTING) -->
-          <div id="one-prelisting-view" class="card" style="text-align: center; padding: 25px 20px;">
-            <svg class="coin-svg-main" viewBox="0 0 100 100" style="width: 85px; height: 85px; margin: 0 auto 10px;">
-              <circle cx="50" cy="50" r="47" fill="#dc6516" stroke="#c0520b" stroke-width="2" />
-              <circle cx="50" cy="50" r="37" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-dasharray="6.5, 4.5" />
+          <div id="one-prelisting-view" class="card-theme" style="text-align: center; padding: 25px 20px;">
+            <svg class="coin-3d" viewBox="0 0 100 100" style="width: 80px; height: 80px;">
+              <circle cx="50" cy="50" r="48" fill="#f59e0b" />
+              <circle cx="50" cy="50" r="35" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-dasharray="6.5, 4.5" />
               <path d="M 37 49 L 51 36 L 58 36 L 58 68 L 47 68 L 47 48 L 41 53 Z" fill="#ffffff" />
             </svg>
-            <h4 style="font-size: 16px; margin-bottom: 5px;">ONE Coin Withdrawal</h4>
-            <p style="font-size: 12px; color: var(--text-gray); margin-bottom: 15px;">
-              Your Total Balance: <b style="color: var(--primary);"><span id="wd-one-bal">0</span> ONE</b>
+            <h4 style="font-size: 16px; margin: 10px 0 5px;">ONE Coin Withdrawal</h4>
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 15px;">
+              Your Total Balance: <b style="color: #b45309;"><span id="wd-one-bal">0</span> ONE</b>
             </p>
             
-            <div class="info-box" style="background: #fff8f3; border-color: #f8d7c2; color: #b54900; text-align: left; font-size: 12px; line-height: 1.6;">
+            <div class="warning-box" style="background:#fffbeb; border-color:#fde68a; color:#b45309; text-align: left;">
               <i class="fas fa-bullhorn"></i> <b>Listing Phase Notice:</b><br />
               Withdrawals for <b>ONE Coin</b> are currently locked and will automatically activate once the <b>Token Officially Lists on DEX / CEX</b>.<br /><br />
               Accumulate as many ONE coins as possible through <b>Tasks</b> and <b>Investment Packages</b> before listing begins!
             </div>
 
-            <button class="btn" style="background: #e2e5e9; color: #788292; cursor: not-allowed; border: 1px solid #d1d5db;" onclick="alert('ONE Coin withdrawals are currently locked and will unlock immediately upon official token listing!')">
+            <button class="btn-gold" style="background: #cbd5e1; color: #64748b; cursor: not-allowed; box-shadow: none;" onclick="alert('ONE Coin withdrawals are currently locked and will unlock immediately upon official token listing!')">
               <i class="fas fa-lock"></i> Available After Listing
             </button>
           </div>
 
-          <!-- 2. UNLOCKED PHASE (ACTIVATED BY ADMIN SWITCH IN FIREBASE) -->
           <div id="one-listed-view" style="display: none;">
-            <div class="info-box" style="background: #eafaf1; color: #155724; border-color: #c3e6cb;">
+            <div class="info-box">
               <b><i class="fas fa-check-circle"></i> Official Listing is Live!</b><br />
               ONE Coin is officially listed. You can now withdraw your ONE Coins directly to your personal crypto wallet.
             </div>
 
-            <div class="card">
-              <p style="font-size: 13px; margin-bottom: 10px;">Available Balance: <b style="color: var(--primary);"><span id="wd-one-bal-active">0</span> ONE</b></p>
+            <div class="card-theme">
+              <p style="font-size: 13px; margin-bottom: 10px;">Available Balance: <b style="color: #b45309;"><span id="wd-one-bal-active">0</span> ONE</b></p>
               
-              <label style="font-size: 11px; color: var(--text-gray);">Recipient ONE Wallet Address</label>
+              <label style="font-size: 11px; color: var(--text-muted); font-weight: 700;">Recipient ONE Wallet Address</label>
               <input type="text" id="wd-one-address" placeholder="Enter recipient wallet address..." />
 
-              <label style="font-size: 11px; color: var(--text-gray);">Withdrawal Amount (Min. 10 ONE)</label>
+              <label style="font-size: 11px; color: var(--text-muted); font-weight: 700;">Withdrawal Amount (Min. 10 ONE)</label>
               <input type="number" id="wd-one-amt" placeholder="10" />
 
-              <button class="btn" onclick="handleWithdrawOneAction()">Withdraw ONE Now</button>
+              <button class="btn-gold" onclick="handleWithdrawOneAction()">Withdraw ONE Now</button>
             </div>
           </div>
         </div>
 
       </div>
-    </div>
 
-    <!-- MODAL POPUP INVESTMENT DEPOSIT -->
-    <div id="invest-modal" class="modal-overlay">
-      <div class="modal-box">
-        <h3 id="modal-title">Investment Package</h3>
-        <div style="background:#fff8f3; border:1px solid #f8d7c2; color:#b54900; padding:10px; border-radius:10px; margin:12px 0; font-size:12px; text-align:left;">
-          <b>Income Simulation Details:</b><br />
-          • Package Cost: <b id="sim-pkg-cost">$1.00 USDT</b><br />
-          • Extra Profit: <b id="sim-pkg-bonus">+$0.10 / day</b><br />
-          • Bonus ONE Coins: <b id="sim-pkg-one">+100 ONE</b><br />
-          • New Daily Rate: <b id="sim-pkg-total">$0.11 / day</b>
+      <!-- ==========================================
+           PAGE 4: PROFILE
+      ========================================== -->
+      <div id="page-profile" class="page">
+        <div class="card-theme" style="text-align: center;">
+          <img id="prof-avatar" class="avatar-img" src="https://via.placeholder.com/150" alt="Avatar" />
+          <h3 id="prof-user" style="font-family:'Outfit',sans-serif;">@User</h3>
+          <div class="badge-verified"><i class="fas fa-check-circle"></i> VERIFIED USER</div>
+          <p style="color: var(--text-muted); font-size: 12px; margin-top: 10px; font-weight: 600;">
+            Telegram UID: #<span id="prof-id">000000</span>
+          </p>
         </div>
 
-        <p style="font-size: 12px; color: var(--text-gray); text-align: left;">
-          Send the exact package amount above to the official address (BEP20):
-        </p>
-        <div class="address-box">0x78e939ece7ae70540291b9a30fd8601e58d2c4cb</div>
-        <button class="btn btn-outline" style="padding:8px; font-size:12px; margin-bottom: 15px;" onclick="copyAddr()">
-          <i class="fas fa-copy"></i> Copy Deposit Address
-        </button>
+        <div class="card-theme" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;">
+          <div style="background: #ffffff; padding: 12px; border-radius: 14px; border: 1px solid #e2e8f0; text-align: center;">
+            <small style="color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase;">Mining Balance</small>
+            <div style="font-size: 16px; font-weight: 900; color: #0f172a; margin-top: 5px;">
+              $<span id="prof-bal-usdt">0.0000</span>
+            </div>
+          </div>
 
-        <label style="font-size: 11px; color: var(--text-gray); display:block; text-align:left;">
-          <b>Your Sender USDT Address (Used for payment):</b>
-        </label>
-        <input type="text" id="sender-usdt-address" placeholder="Enter your sender wallet address (0x...)" />
+          <div style="background: #ffffff; padding: 12px; border-radius: 14px; border: 1px solid #e2e8f0; text-align: center;">
+            <small style="color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase;">ONE Coin Balance</small>
+            <div style="font-size: 16px; font-weight: 900; color: #b45309; margin-top: 5px; display: flex; align-items: center; justify-content: center; gap: 5px;">
+              <span id="prof-bal-one">0</span> ONE
+            </div>
+          </div>
+        </div>
 
-        <button class="btn" onclick="submitDepositConfirmation()">Confirm & Submit Deposit</button>
-        <button class="btn" style="background:#e0e0e0; color:#333; margin-top:6px;" onclick="closeInvestModal()">Close</button>
+        <div class="card-theme">
+          <h4 style="margin-bottom: 8px; font-size: 14px;">Your Referral Link</h4>
+          <div class="address-box" id="ref-link">Loading referral link...</div>
+          <button class="btn-gold btn-outline-gold" style="height: 40px; font-size: 13px;" onclick="copyRef()">Copy Referral Link</button>
+          <div style="margin-top: 15px; font-size: 13px; font-weight: 600;">
+            Total Active Referrals: <span id="ref-count" style="font-weight: 900; color: #b45309;">0</span> users
+          </div>
+        </div>
+
+        <!-- REWARD REFERRAL: +100 ONE COIN -->
+        <div class="card-theme">
+          <h4 style="margin-bottom: 5px; font-size: 14px;">Enter Inviter ID</h4>
+          <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
+            Bind your inviter's ID to claim an instant bonus of <b style="color: #b45309;">+100 ONE Coins</b>:
+          </p>
+          <input type="number" id="input-inviter-id" placeholder="e.g. 12345678" />
+          <button class="btn-gold" id="btn-submit-ref" onclick="submitManualRef()">Bind Inviter (+100 ONE)</button>
+        </div>
       </div>
     </div>
 
-    <!-- Navigation Bar -->
-    <nav class="nav-bar">
-      <div class="nav-item active" onclick="nav('home', this)"><i class="fas fa-home"></i> Home</div>
-      <div class="nav-item" onclick="nav('tasks', this)"><i class="fas fa-tasks"></i> Tasks</div>
-      <div class="nav-item" onclick="nav('profile', this)"><i class="fas fa-user-circle"></i> Profile</div>
-      <div class="nav-item" onclick="nav('withdraw', this)"><i class="fas fa-wallet"></i> Withdraw</div>
-    </nav>
+    <!-- ========================================================
+         BOTTOM NAV BAR
+    ======================================================== -->
+    <div class="nav-wrapper">
+      <div class="nav-dark-capsule">
+        <div class="nav-tab-item active" id="nav-btn-home" onclick="nav('home')">
+          <i class="fas fa-home"></i>
+          <span class="tab-text">Home</span>
+        </div>
+        <div class="nav-tab-item" id="nav-btn-tasks" onclick="nav('tasks')">
+          <i class="fas fa-users"></i>
+          <span class="tab-text">Tasks</span>
+        </div>
+        <div class="nav-tab-item" id="nav-btn-withdraw" onclick="nav('withdraw')">
+          <i class="fas fa-wallet"></i>
+          <span class="tab-text">Withdraw</span>
+        </div>
+      </div>
+
+      <div class="nav-profile-button" id="nav-btn-profile" onclick="nav('profile')">
+        <i class="fas fa-user"></i>
+      </div>
+    </div>
+
+    <!-- MODAL INVESTMENT POPUP -->
+    <div id="invest-modal" class="modal-overlay">
+      <div class="modal-box">
+        <h3 id="modal-title" style="font-family:'Outfit',sans-serif; margin-bottom: 8px;">Investment Package</h3>
+        <div style="background:#fffbeb; border:1.5px solid #fde68a; color:#92400e; padding:14px; border-radius:16px; margin:14px 0; font-size:12px; text-align:left; line-height: 1.6;">
+          <b>Income & Bonus Simulation:</b><br />
+          • Package Cost: <b id="sim-pkg-cost">$1.00 USDT</b><br />
+          • Base Mining Rate: <b>$0.50 / day</b><br />
+          • Extra Profit: <b id="sim-pkg-bonus">+$0.15 / day</b><br />
+          • Instant ONE Bonus: <b id="sim-pkg-one">+150 ONE</b><br />
+          • New Total Daily Rate: <b id="sim-pkg-total" style="color:#15803d; font-size:14px;">$0.65 / day</b>
+        </div>
+
+        <p style="font-size: 12px; color: var(--text-muted); text-align: left;">
+          Send the exact package amount above to the official address (BEP20):
+        </p>
+        <div class="address-box">0x541160E598Fd2d51c21aA977beb674bb207bFaB8</div>
+        <button class="btn-gold btn-outline-gold" style="padding:8px; font-size:12px; margin-bottom: 15px;" onclick="copyAddr()">
+          <i class="fas fa-copy"></i> Copy Deposit Address
+        </button>
+
+        <label style="font-size: 11px; color: var(--text-muted); display:block; text-align:left; font-weight:700;">
+          Your Sender USDT Address (Used for payment):
+        </label>
+        <input type="text" id="sender-usdt-address" placeholder="Enter your sender wallet address (0x...)" />
+
+        <button class="btn-gold" onclick="submitDepositConfirmation()">Confirm & Submit Deposit</button>
+        <button class="btn-gold" style="background:#e2e8f0; color:#334155; box-shadow:none; margin-top:6px;" onclick="closeInvestModal()">Close</button>
+      </div>
+    </div>
 
     <script>
       // ==========================================
       // 1. FIREBASE & BOT CONFIGURATION
       // ==========================================
       const firebaseConfig = {
-  apiKey: "AIzaSyCr-V3TxkQp4-Vmd7zFhqoLkfF8hAiDmzc",
-  authDomain: "onecoin-miner-bot.firebaseapp.com",
-  databaseURL: "https://onecoin-miner-bot-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "onecoin-miner-bot",
-  storageBucket: "onecoin-miner-bot.firebasestorage.app",
-  messagingSenderId: "51465173443",
-  appId: "1:51465173443:web:c61078967f58d1571ba576"
-};
+        apiKey: "AIzaSyYOUR_API_KEY",
+        authDomain: "your-app.firebaseapp.com",
+        databaseURL: "https://your-app-default-rtdb.firebaseio.com",
+        projectId: "your-app",
+        storageBucket: "your-app.appspot.com",
+        messagingSenderId: "123456789",
+        appId: "1:123456789:web:abcdef"
+      };
 
       const TG_BOT_USERNAME = "OnecoinMinerBot"; 
-      const DEPOSIT_ADDRESS = "0x78e939ece7ae70540291b9a30fd8601e58d2c4cb";
+      const DEPOSIT_ADDRESS = "0x541160E598Fd2d51c21aA977beb674bb207bFaB8";
 
       let dbFirebase = null;
       try {
@@ -512,15 +871,15 @@
         photo_url: currentPhoto,
         balance: 0.00,
         oneCoin: 0,
-        dailyRate: 0.01,
+        dailyRate: 0.50,
         lastSync: Date.now(),
-        withdrawUnlocked: false,
+        withdrawUnlocked: true,
         invitedBy: null,
         refCount: 0,
         tasks: {}
       };
 
-      let isOneCoinListed = false; // Master Switch for Listing
+      let isOneCoinListed = false;
       let selectedPkg = 1;
 
       // ==========================================
@@ -534,10 +893,12 @@
             if (val) {
               userState = { ...userState, ...val };
               if (!userState.tasks) userState.tasks = {};
+              if (!userState.dailyRate || userState.dailyRate < 0.50) userState.dailyRate = 0.50;
             } else {
+              // Jika mendaftar lewat link referral ?startapp=ID -> dapat +100 ONE
               if (startParam && startParam !== currentUid) {
                 userState.invitedBy = startParam;
-                userState.oneCoin = (Number(userState.oneCoin) || 0) + 10;
+                userState.oneCoin = (Number(userState.oneCoin) || 0) + 100;
                 recordReferral(startParam);
               }
               userRef.set(userState);
@@ -552,7 +913,6 @@
             updateUI();
           });
 
-          // LISTING MASTER SWITCH: Listens directly to settings/isListed
           dbFirebase.ref("settings/isListed").on("value", (snap) => {
             isOneCoinListed = snap.val() === true;
             updateListingStatusUI();
@@ -562,6 +922,7 @@
           const local = localStorage.getItem("user_" + currentUid);
           if (local) userState = JSON.parse(local);
           if (!userState.tasks) userState.tasks = {};
+          if (!userState.dailyRate || userState.dailyRate < 0.50) userState.dailyRate = 0.50;
           calculatePassive();
           updateUI();
         }
@@ -578,7 +939,7 @@
       function calculatePassive() {
         const now = Date.now();
         const elapsed = now - userState.lastSync;
-        const currentDailyRate = Number(userState.dailyRate) || 0.01;
+        const currentDailyRate = Number(userState.dailyRate) || 0.50;
         const ratePerMs = currentDailyRate / 86400000;
         userState.balance += elapsed * ratePerMs;
         userState.lastSync = now;
@@ -586,7 +947,29 @@
       }
 
       // ==========================================
-      // 4. WITHDRAWAL HANDLERS
+      // 4. NAVIGATION CONTROLLER
+      // ==========================================
+      function nav(id) {
+          document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+          const targetPage = document.getElementById("page-" + id);
+          if (targetPage) targetPage.classList.add("active");
+
+          document.querySelectorAll(".nav-tab-item").forEach(n => n.classList.remove("active"));
+          const profBtn = document.getElementById("nav-btn-profile");
+          if (profBtn) profBtn.classList.remove("active");
+
+          if (id === 'profile') {
+              if (profBtn) profBtn.classList.add("active");
+          } else {
+              const targetBtn = document.getElementById("nav-btn-" + id);
+              if (targetBtn) targetBtn.classList.add("active");
+          }
+
+          updateUI();
+      }
+
+      // ==========================================
+      // 5. WITHDRAWAL HANDLERS
       // ==========================================
       function switchWdTab(type) {
         if (type === 'usdt') {
@@ -612,22 +995,22 @@
           if (preView) preView.style.display = "none";
           if (actView) actView.style.display = "block";
           if (tag) {
-            tag.style.background = "#28a745";
+            tag.style.background = "#10b981";
             tag.innerText = "OPEN";
           }
         } else {
           if (preView) preView.style.display = "block";
           if (actView) actView.style.display = "none";
           if (tag) {
-            tag.style.background = "#dc3545";
+            tag.style.background = "#ef4444";
             tag.innerText = "LISTING";
           }
         }
       }
 
       function handleWithdrawAction() {
-        if (!userState.withdrawUnlocked) {
-          return alert("WITHDRAWAL LOCKED:\n\nYour withdrawal is currently LOCKED. Please deposit USDT and wait for admin approval to unlock withdrawals.");
+        if (userState.withdrawUnlocked === false) {
+          return alert("WITHDRAWAL BLOCKED:\n\nYour withdrawal has been LOCKED by the Administrator. Please deposit 1 USDT (BEP20) for verification or contact admin support.");
         }
 
         const addr = document.getElementById("wd-address").value.trim();
@@ -701,7 +1084,7 @@
       function renderHistory(list) {
         const container = document.getElementById("history-list");
         if (!list || list.length === 0) {
-          container.innerHTML = `<p style="text-align: center; color: var(--text-gray); font-size: 12px; padding: 10px;">No transaction history yet.</p>`;
+          container.innerHTML = `<p style="text-align: center; color: var(--text-muted); font-size: 12px; padding: 10px;">No transaction history yet.</p>`;
           return;
         }
 
@@ -717,15 +1100,15 @@
           const currentStatus = (item.status || "pending").toLowerCase();
 
           if (currentStatus === "approved" || currentStatus === "success") {
-            statusBadge = `<span style="color: var(--success); font-weight: 800; background: #eafaf1; padding: 4px 10px; border-radius: 6px; font-size: 11px; border: 1px solid #c3e6cb;">
+            statusBadge = `<span style="color: #10b981; font-weight: 800; background: #ecfdf5; padding: 4px 10px; border-radius: 8px; font-size: 11px; border: 1px solid #a7f3d0;">
               <i class="fas fa-check-circle"></i> SUCCESS
             </span>`;
           } else if (currentStatus === "rejected") {
-            statusBadge = `<span style="color: var(--error); font-weight: 800; background: #fff5f5; padding: 4px 10px; border-radius: 6px; font-size: 11px; border: 1px solid #ffe6e6;">
+            statusBadge = `<span style="color: #ef4444; font-weight: 800; background: #fef2f2; padding: 4px 10px; border-radius: 8px; font-size: 11px; border: 1px solid #fecaca;">
               <i class="fas fa-times-circle"></i> REJECTED
             </span>`;
           } else {
-            statusBadge = `<span style="color: #b8860b; font-weight: 800; background: #fffbf0; padding: 4px 10px; border-radius: 6px; font-size: 11px; border: 1px solid #fae8a4;">
+            statusBadge = `<span style="color: #d97706; font-weight: 800; background: #fffbeb; padding: 4px 10px; border-radius: 8px; font-size: 11px; border: 1px solid #fde68a;">
               <i class="fas fa-clock"></i> PENDING
             </span>`;
           }
@@ -733,13 +1116,13 @@
           const currencyLabel = item.currency === "ONE" ? `${item.amount} ONE` : `$${Number(item.amount).toFixed(2)} USDT`;
 
           return `
-            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #e2e8f0;">
               <div>
-                <b style="font-size: 14px; color: var(--text-main);">${currencyLabel}</b>
-                <div style="font-size: 11px; color: var(--text-gray); margin-top: 3px; font-family: monospace;">
-                  <i class="fas fa-wallet" style="color: var(--primary); font-size: 10px;"></i> ${shortAddr}
+                <b style="font-size: 14px; color: #0f172a;">${currencyLabel}</b>
+                <div style="font-size: 11px; color: var(--text-muted); margin-top: 3px; font-family: monospace;">
+                  <i class="fas fa-wallet" style="color: #f59e0b; font-size: 10px;"></i> ${shortAddr}
                 </div>
-                <div style="font-size: 10px; color: #8c95a0; margin-top: 3px;">
+                <div style="font-size: 10px; color: #94a3b8; margin-top: 3px;">
                   <i class="far fa-calendar-alt"></i> ${dateStr}
                 </div>
               </div>
@@ -752,13 +1135,14 @@
       }
 
       // ==========================================
-      // 5. INVESTMENT & DEPOSIT
+      // 6. INVESTMENT & DEPOSIT
       // ==========================================
       function openInvestModal(pkgAmount) {
         selectedPkg = pkgAmount;
-        const bonusDaily = pkgAmount * 0.10;
-        const bonusOne = pkgAmount * 100;
-        const totalNewRate = (Number(userState.dailyRate) || 0.01) + bonusDaily;
+        const baseRate = 0.50;
+        const bonusDaily = pkgAmount * 0.15;
+        const bonusOne = pkgAmount * 150;
+        const totalNewRate = baseRate + bonusDaily;
 
         document.getElementById("modal-title").innerText = `Investment Package: $${pkgAmount} USDT`;
         document.getElementById("sim-pkg-cost").innerText = `$${pkgAmount}.00 USDT`;
@@ -785,29 +1169,29 @@
           pkgAmount: selectedPkg,
           senderAddress: senderAddr,
           targetAddress: DEPOSIT_ADDRESS,
-          expectedDailyProfit: selectedPkg * 0.10,
-          expectedBonusOne: selectedPkg * 100,
+          expectedDailyProfit: selectedPkg * 0.15,
+          expectedBonusOne: selectedPkg * 150,
           status: "pending",
           timestamp: Date.now()
         };
 
         if (dbFirebase) dbFirebase.ref("deposits").push(depositData);
 
-        alert(`Deposit submitted!\n\nAdmin will verify the transaction from:\n${senderAddr}\n\nOnce approved, your withdrawal will be UNLOCKED and profits updated.`);
+        alert(`Deposit submitted!\n\nAdmin will verify the transaction from:\n${senderAddr}\n\nOnce approved, rate will jump to +$${(selectedPkg * 0.15).toFixed(2)}/day, and +${selectedPkg * 150} ONE coins will be credited.`);
         closeInvestModal();
       }
 
       const pkgGrid = document.getElementById("pkg-list");
       for (let i = 1; i <= 10; i++) {
         const d = document.createElement("div");
-        d.className = "pkg-item";
+        d.className = "glass-pkg-item";
         d.onclick = () => openInvestModal(i);
-        d.innerHTML = `<b>$${i}</b><small>+${i * 100} ONE</small>`;
+        d.innerHTML = `<b>$${i}</b><small>+${(i * 0.15).toFixed(2)}/D</small>`;
         pkgGrid.appendChild(d);
       }
 
       // ==========================================
-      // 6. TASK LOGIC
+      // 7. TASK LOGIC (REWARD: +100 ONE COIN)
       // ==========================================
       function doTask(id, url) {
         if (userState.tasks && userState.tasks[id]) {
@@ -819,40 +1203,41 @@
         setTimeout(() => {
           if (!userState.tasks) userState.tasks = {};
           userState.tasks[id] = true;
-          userState.oneCoin = (Number(userState.oneCoin) || 0) + 10;
+          // REWARD TUGAS: +100 KOIN ONE
+          userState.oneCoin = (Number(userState.oneCoin) || 0) + 100;
           
           saveUserState();
           updateUI();
           
-          alert("Congratulations! Task completed. You earned +10 ONE Coins!");
+          alert("Congratulations! Task completed. You earned +100 ONE Coins!");
         }, 2000);
       }
 
       function updateTaskButtons() {
         const taskMap = [
-          { id: 'twt', btnId: 'btn-task-twt' },
-          { id: 'swp', btnId: 'btn-task-swp' },
-          { id: 'onecoin', btnId: 'btn-task-onecoin' }
+          { id: 'durov', btnId: 'btn-task-durov' },
+          { id: 'walt', btnId: 'btn-task-walt' },
+          { id: 'onecoin2', btnId: 'btn-task-onecoin2' }
         ];
 
         taskMap.forEach(item => {
           const btn = document.getElementById(item.btnId);
           if (btn) {
             if (userState.tasks && userState.tasks[item.id]) {
-              btn.className = "btn btn-done";
+              btn.className = "btn-gold btn-done";
               btn.disabled = true;
               btn.innerHTML = '<i class="fas fa-check"></i> Completed';
               btn.style.width = "auto";
               btn.style.margin = "0";
-              btn.style.padding = "8px 15px";
+              btn.style.padding = "8px 18px";
               btn.style.fontSize = "12px";
             } else {
-              btn.className = "btn";
+              btn.className = "btn-gold";
               btn.disabled = false;
               btn.innerHTML = 'Join';
               btn.style.width = "auto";
               btn.style.margin = "0";
-              btn.style.padding = "8px 15px";
+              btn.style.padding = "8px 18px";
               btn.style.fontSize = "12px";
             }
           }
@@ -860,7 +1245,7 @@
       }
 
       // ==========================================
-      // 7. REFERRAL SYSTEM
+      // 8. REFERRAL SYSTEM (REWARD: +100 ONE COIN)
       // ==========================================
       function recordReferral(inviterId) {
         if (!dbFirebase) return;
@@ -868,7 +1253,8 @@
         inviterRef.once("value", (snap) => {
           if (snap.exists()) {
             inviterRef.child("refCount").set(firebase.database.ServerValue.increment(1));
-            inviterRef.child("oneCoin").set(firebase.database.ServerValue.increment(10));
+            // REWARD PENGUNDANG: +100 KOIN ONE
+            inviterRef.child("oneCoin").set(firebase.database.ServerValue.increment(100));
           }
         });
       }
@@ -883,13 +1269,14 @@
           dbFirebase.ref("users/" + inputId).once("value", (snap) => {
             if (snap.exists()) {
               userState.invitedBy = inputId;
-              userState.oneCoin = (Number(userState.oneCoin) || 0) + 10;
+              // REWARD PENGGUNA YANG MENGIKAT KODE: +100 KOIN ONE
+              userState.oneCoin = (Number(userState.oneCoin) || 0) + 100;
               
               recordReferral(inputId);
               saveUserState();
               updateUI();
               
-              alert("Inviter linked successfully: #" + inputId + "\n\nCongratulations! You received an instant +10 ONE Coin bonus!");
+              alert("Inviter linked successfully: #" + inputId + "\n\nCongratulations! You received an instant +100 ONE Coin bonus!");
             } else {
               alert("Inviter ID not found!");
             }
@@ -898,11 +1285,11 @@
       }
 
       // ==========================================
-      // 8. UI SYNCHRONIZATION
+      // 9. UI SYNCHRONIZATION
       // ==========================================
       function updateUI() {
         document.getElementById("bal-main").innerText = userState.balance.toFixed(6);
-        document.getElementById("rate-display").innerText = (Number(userState.dailyRate) || 0.01).toFixed(2);
+        document.getElementById("rate-display").innerText = (Number(userState.dailyRate) || 0.50).toFixed(2);
         document.getElementById("prof-user").innerText = "@" + userState.username;
         document.getElementById("prof-id").innerText = userState.uid;
         document.getElementById("prof-avatar").src = userState.photo_url;
@@ -919,7 +1306,7 @@
         document.getElementById("ref-link").innerText = refLink;
         document.getElementById("ref-count").innerText = userState.refCount || 0;
 
-        if (userState.withdrawUnlocked === true) {
+        if (userState.withdrawUnlocked !== false) {
           document.getElementById("wd-locked-box").style.display = "none";
           document.getElementById("wd-unlocked-box").style.display = "block";
         } else {
@@ -932,17 +1319,9 @@
         if (userState.invitedBy) {
           const btn = document.getElementById("btn-submit-ref");
           btn.disabled = true;
-          btn.innerText = "Linked: #" + userState.invitedBy + " (+10 ONE Claimed)";
+          btn.innerText = "Linked: #" + userState.invitedBy + " (+100 ONE Claimed)";
           btn.style.opacity = "0.7";
         }
-      }
-
-      function nav(id, el) {
-        document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-        document.getElementById("page-" + id).classList.add("active");
-        document.querySelectorAll(".nav-item").forEach(n => n.classList.remove("active"));
-        el.classList.add("active");
-        updateUI();
       }
 
       function copyRef() {
