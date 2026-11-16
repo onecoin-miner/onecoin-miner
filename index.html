@@ -56,16 +56,77 @@
       #app {
           flex: 1;
           overflow-y: auto;
-          padding: 16px 18px 120px;
+          padding: 14px 18px 120px;
       }
 
       .page { display: none; animation: fadeIn 0.35s ease; }
       .page.active { display: block; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
+      /* ========================================================
+         PRE-MARKET PRICE BADGE (TEPAT DI ATAS ONECOIN)
+      ======================================================== */
+      .premarket-wrapper {
+          text-align: center;
+          margin-bottom: 8px;
+      }
+
+      .premarket-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          background: rgba(255, 255, 255, 0.92);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1.5px solid rgba(245, 158, 11, 0.45);
+          padding: 5px 14px;
+          border-radius: 40px;
+          box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+      }
+
+      .pulse-dot {
+          width: 7px; height: 7px;
+          background: #22c55e;
+          border-radius: 50%;
+          box-shadow: 0 0 8px #22c55e;
+          animation: pulseDot 1.5s infinite;
+      }
+      @keyframes pulseDot {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.35); opacity: 0.6; }
+      }
+
+      .pm-tag {
+          background: #fef3c7;
+          color: #b45309;
+          font-size: 9.5px;
+          font-weight: 900;
+          letter-spacing: 0.5px;
+          padding: 2px 7px;
+          border-radius: 6px;
+          border: 1px solid #fde68a;
+      }
+
+      .pm-pair {
+          color: #475569;
+          font-size: 11.5px;
+          font-weight: 700;
+      }
+
+      .pm-price {
+          color: #15803d;
+          font-size: 12.5px;
+          font-weight: 900;
+          font-family: 'Outfit', sans-serif;
+          letter-spacing: 0.2px;
+      }
+
+      /* ========================================================
+         HERO SECTION: ONE COIN
+      ======================================================== */
       .hero-section {
           text-align: center;
-          padding: 8px 0 16px;
+          padding: 4px 0 16px;
           position: relative;
       }
 
@@ -126,6 +187,9 @@
           background: #cbd5e1;
       }
 
+      /* ========================================================
+         BALANCE CARD (IKON AWAN & TEKS SEJAJAR)
+      ======================================================== */
       .balance-dark-card {
           background: linear-gradient(180deg, #131722 0%, #0a0d14 100%);
           border-radius: 26px;
@@ -212,6 +276,9 @@
       .b4 { height: 80%; }
       .b5 { height: 100%; }
 
+      /* ========================================================
+         INVESTMENT CARD
+      ======================================================== */
       .invest-glass-card {
           background: #ffffff;
           border-radius: 28px;
@@ -285,6 +352,9 @@
           margin-top: 2px;
       }
 
+      /* ========================================================
+         FLOATING BOTTOM NAV BAR
+      ======================================================== */
       .nav-wrapper {
           position: fixed;
           bottom: 16px;
@@ -339,12 +409,8 @@
           padding: 10px 18px;
           box-shadow: 0 0 16px rgba(245, 158, 11, 0.65);
       }
-      .nav-tab-item.active .tab-text {
-          display: inline-block;
-      }
-      .nav-tab-item.active i {
-          color: #ffffff;
-      }
+      .nav-tab-item.active .tab-text { display: inline-block; }
+      .nav-tab-item.active i { color: #ffffff; }
 
       .nav-profile-button {
           pointer-events: auto;
@@ -367,9 +433,7 @@
           background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
           box-shadow: 0 0 22px rgba(245, 158, 11, 0.8);
       }
-      .nav-profile-button:active, .nav-tab-item:active {
-          transform: scale(0.92);
-      }
+      .nav-profile-button:active, .nav-tab-item:active { transform: scale(0.92); }
 
       .card-theme {
           background: #ffffff;
@@ -487,9 +551,22 @@
     <div id="toast">Copied!</div>
 
     <div id="app">
-      <!-- PAGE 1: HOME -->
+      <!-- ==========================================
+           PAGE 1: HOME
+      ========================================== -->
       <div id="page-home" class="page active">
         
+        <!-- PRE-MARKET TICKER DI PALING ATAS (TEPAT DI ATAS ONECOIN) -->
+        <div class="premarket-wrapper">
+          <div class="premarket-pill">
+            <span class="pulse-dot"></span>
+            <span class="pm-tag">PRE-MARKET</span>
+            <span class="pm-pair">$ONE / USD</span>
+            <span class="pm-price">$0.0006</span>
+          </div>
+        </div>
+
+        <!-- HERO COIN -->
         <div class="hero-section">
           <div class="coin-wrapper">
             <svg class="coin-3d" viewBox="0 0 100 100">
@@ -517,7 +594,7 @@
           <div class="brand-sub">Automated Cloud Mining Active</div>
         </div>
 
-        <!-- BALANCE CARD (BASE PROFIT: $0.10 / 24 HOURS) -->
+        <!-- BALANCE CARD -->
         <div class="balance-dark-card">
           <div class="balance-left-icon">
             <i class="fas fa-cloud"></i>
@@ -558,7 +635,9 @@
 
       </div>
 
-      <!-- PAGE 2: TASKS (REWARD: 100 ONE) -->
+      <!-- ==========================================
+           PAGE 2: TASKS (REWARD: 100 ONE)
+      ========================================== -->
       <div id="page-tasks" class="page">
         <h3 style="font-family:'Outfit',sans-serif; margin-bottom: 8px;">Community Tasks</h3>
         <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
@@ -595,14 +674,16 @@
               <p style="font-weight: 800; font-size: 14px;">Join 1Coin Channel</p>
               <small style="color: #d97706; font-weight: 800;">Reward: +100 ONE</small>
             </div>
-            <button id="btn-task-onecoin3" class="btn-gold" style="width: auto; margin:0; padding: 8px 18px; font-size: 12px;" onclick="doTask('onecoin3', 'https://t.me/OneCoin_Channel')">
+            <button id="btn-task-onecoin2" class="btn-gold" style="width: auto; margin:0; padding: 8px 18px; font-size: 12px;" onclick="doTask('onecoin2', 'https://t.me/+0Ye7EgW07oBkNDg1')">
               Join
             </button>
           </div>
         </div>
       </div>
 
-      <!-- PAGE 3: WITHDRAW -->
+      <!-- ==========================================
+           PAGE 3: WITHDRAW
+      ========================================== -->
       <div id="page-withdraw" class="page">
         <h3 style="font-family:'Outfit',sans-serif; margin-bottom: 15px;">Withdrawal Center</h3>
 
@@ -691,17 +772,20 @@
 
       </div>
 
-      <!-- PAGE 4: PROFILE -->
+      <!-- ==========================================
+           PAGE 4: PROFILE
+      ========================================== -->
       <div id="page-profile" class="page">
         <div class="card-theme" style="text-align: center;">
           <img id="prof-avatar" class="avatar-img" src="https://via.placeholder.com/150" alt="Avatar" />
           <h3 id="prof-user" style="font-family:'Outfit',sans-serif;">@User</h3>
-          <div class="badge-verified"><i class="fas fa-check-circle"></i> 1Coin Miner</div>
+          <div class="badge-verified"><i class="fas fa-check-circle"></i> VERIFIED USER</div>
           <p style="color: var(--text-muted); font-size: 12px; margin-top: 10px; font-weight: 600;">
             Telegram UID: #<span id="prof-id">000000</span>
           </p>
         </div>
 
+        <!-- BALANCES IN PROFILE -->
         <div class="card-theme" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px;">
           <div style="background: #ffffff; padding: 12px; border-radius: 14px; border: 1px solid #e2e8f0; text-align: center;">
             <small style="color: var(--text-muted); font-size: 10px; font-weight: 800; text-transform: uppercase;">Mining Balance</small>
@@ -718,6 +802,35 @@
           </div>
         </div>
 
+        <!-- SWAP ONE COIN TO USD -->
+        <div class="card-theme" style="background: #ffffff; border: 1.5px solid #fde68a;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h4 style="font-size: 14px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+              <i class="fas fa-rotate" style="color: #f59e0b;"></i> Swap ONE to USD
+            </h4>
+            <span style="background: #fffbeb; color: #b45309; border: 1px solid #fde68a; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 6px;">
+              100 ONE = $0.06 USD
+            </span>
+          </div>
+          <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 10px;">
+            Instant exchange before official token listing:
+          </p>
+
+          <div style="position: relative;">
+            <input type="number" id="swap-one-amt" placeholder="Enter ONE amount (Min. 100)" oninput="calcSwapEst()" style="padding-right: 65px;" />
+            <button onclick="setSwapMax()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: #fef3c7; color: #b45309; border: 1px solid #fde68a; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; cursor: pointer;">
+              MAX
+            </button>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 700; color: var(--text-muted); margin: 4px 2px 8px;">
+            <span>Estimated Received:</span>
+            <span style="color: #15803d; font-size: 12px; font-weight: 900;" id="swap-est-usd">$0.0000 USD</span>
+          </div>
+
+          <button class="btn-gold" onclick="handleSwapOneToUsd()">Swap Now</button>
+        </div>
+
         <div class="card-theme">
           <h4 style="margin-bottom: 8px; font-size: 14px;">Your Referral Link</h4>
           <div class="address-box" id="ref-link">Loading referral link...</div>
@@ -727,13 +840,12 @@
           </div>
         </div>
 
-        <!-- REWARD REFERRAL: +100 ONE COIN -->
         <div class="card-theme">
           <h4 style="margin-bottom: 5px; font-size: 14px;">Enter Inviter ID</h4>
           <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 8px;">
             Bind your inviter's ID to claim an instant bonus of <b style="color: #b45309;">+100 ONE Coins</b>:
           </p>
-          <input type="number" id="input-inviter-id" placeholder="e.g. 3133287" />
+          <input type="number" id="input-inviter-id" placeholder="e.g. 12345678" />
           <button class="btn-gold" id="btn-submit-ref" onclick="submitManualRef()">Bind Inviter (+100 ONE)</button>
         </div>
       </div>
@@ -761,7 +873,7 @@
       </div>
     </div>
 
-    <!-- MODAL INVESTMENT POPUP (KALKULASI PROPORSIONAL $0.10 BASE) -->
+    <!-- MODAL INVESTMENT POPUP -->
     <div id="invest-modal" class="modal-overlay">
       <div class="modal-box">
         <h3 id="modal-title" style="font-family:'Outfit',sans-serif; margin-bottom: 8px;">Investment Package</h3>
@@ -797,15 +909,14 @@
       // 1. FIREBASE & BOT CONFIGURATION
       // ==========================================
       const firebaseConfig = {
-  apiKey: "AIzaSyCr-V3TxkQp4-Vmd7zFhqoLkfF8hAiDmzc",
-  authDomain: "onecoin-miner-bot.firebaseapp.com",
-  databaseURL: "https://onecoin-miner-bot-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "onecoin-miner-bot",
-  storageBucket: "onecoin-miner-bot.firebasestorage.app",
-  messagingSenderId: "51465173443",
-  appId: "1:51465173443:web:c61078967f58d1571ba576"
-};
-
+        apiKey: "AIzaSyYOUR_API_KEY",
+        authDomain: "your-app.firebaseapp.com",
+        databaseURL: "https://your-app-default-rtdb.firebaseio.com",
+        projectId: "your-app",
+        storageBucket: "your-app.appspot.com",
+        messagingSenderId: "123456789",
+        appId: "1:123456789:web:abcdef"
+      };
 
       const TG_BOT_USERNAME = "OnecoinMinerBot"; 
       const DEPOSIT_ADDRESS = "0x541160E598Fd2d51c21aA977beb674bb207bFaB8";
@@ -837,7 +948,7 @@
         photo_url: currentPhoto,
         balance: 0.00,
         oneCoin: 0,
-        dailyRate: 0.10, // DEFAULT PROFIT HARIAN BARU: $0.10 / HARI
+        dailyRate: 0.10,
         lastSync: Date.now(),
         withdrawUnlocked: true,
         invitedBy: null,
@@ -1110,13 +1221,13 @@
       }
 
       // ========================================================
-      // 6. KALKULASI DEPOSIT ($0.10 BASE + $0.10/D & +50 ONE)
+      // 6. KALKULASI DEPOSIT
       // ========================================================
       function openInvestModal(pkgAmount) {
         selectedPkg = pkgAmount;
         const baseRate = 0.10;
-        const bonusDaily = pkgAmount * 0.10; // Extra +$0.10/day per $1
-        const bonusOne = pkgAmount * 50;     // Extra +50 ONE per $1
+        const bonusDaily = pkgAmount * 0.10;
+        const bonusOne = pkgAmount * 50;
         const totalNewRate = baseRate + bonusDaily;
 
         document.getElementById("modal-title").innerText = `Investment Package: $${pkgAmount} USDT`;
@@ -1156,7 +1267,6 @@
         closeInvestModal();
       }
 
-      // Render 10 Kotak Paket Sesuai Kalkulasi Baru (+0.10/D per $1)
       const pkgGrid = document.getElementById("pkg-list");
       for (let i = 1; i <= 10; i++) {
         const d = document.createElement("div");
@@ -1192,7 +1302,7 @@
         const taskMap = [
           { id: 'durov', btnId: 'btn-task-durov' },
           { id: 'walt', btnId: 'btn-task-walt' },
-          { id: 'onecoin3', btnId: 'btn-task-onecoin3' }
+          { id: 'onecoin2', btnId: 'btn-task-onecoin2' }
         ];
 
         taskMap.forEach(item => {
@@ -1257,8 +1367,46 @@
         }
       }
 
+      // ========================================================
+      // 9. SWAP ONE COIN TO USD (100 ONE = $0.06 USD)
+      // ========================================================
+      function calcSwapEst() {
+        const inputVal = parseFloat(document.getElementById("swap-one-amt").value) || 0;
+        const usdEst = (inputVal * 0.0006).toFixed(4);
+        document.getElementById("swap-est-usd").innerText = `$${usdEst} USD`;
+      }
+
+      function setSwapMax() {
+        const maxOne = Math.floor(userState.oneCoin || 0);
+        document.getElementById("swap-one-amt").value = maxOne;
+        calcSwapEst();
+      }
+
+      function handleSwapOneToUsd() {
+        const amt = parseFloat(document.getElementById("swap-one-amt").value);
+
+        if (isNaN(amt) || amt < 100) {
+          return alert("Minimum swap amount is 100 ONE Coins!");
+        }
+
+        if ((userState.oneCoin || 0) < amt) {
+          return alert("Insufficient ONE Coin balance to complete this swap!");
+        }
+
+        const usdReceived = amt * 0.0006;
+        userState.oneCoin -= amt;
+        userState.balance += usdReceived;
+
+        saveUserState();
+        updateUI();
+
+        alert(`SWAP SUCCESSFUL!\n\nSwapped: ${amt} ONE Coins\nReceived: +$${usdReceived.toFixed(4)} USD\n\nYour USD Mining Balance has been credited!`);
+        document.getElementById("swap-one-amt").value = "";
+        calcSwapEst();
+      }
+
       // ==========================================
-      // 9. UI SYNCHRONIZATION
+      // 10. UI SYNCHRONIZATION
       // ==========================================
       function updateUI() {
         document.getElementById("bal-main").innerText = userState.balance.toFixed(6);
