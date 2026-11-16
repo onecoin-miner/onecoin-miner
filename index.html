@@ -45,13 +45,11 @@
           position: relative;
       }
 
-      /* Background Clean Luxury Radiant Sesuai Foto */
       body::before {
           content: "";
           position: fixed;
           top: 0; left: 0; width: 100%; height: 100%;
-          background: 
-            radial-gradient(circle at 50% 12%, rgba(245, 158, 11, 0.22) 0%, rgba(248, 250, 252, 0.8) 42%, #e2e8f0 100%);
+          background: radial-gradient(circle at 50% 12%, rgba(245, 158, 11, 0.22) 0%, rgba(248, 250, 252, 0.8) 42%, #e2e8f0 100%);
           z-index: -2;
       }
 
@@ -65,9 +63,6 @@
       .page.active { display: block; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-      /* ========================================================
-         1. HERO COIN (PERSIS SEPERTI FOTO)
-      ======================================================== */
       .hero-section {
           text-align: center;
           padding: 8px 0 16px;
@@ -80,7 +75,6 @@
           margin: 0 auto 12px;
       }
 
-      /* Efek Halo Cahaya Emas di Belakang Koin */
       .coin-wrapper::before {
           content: "";
           position: absolute;
@@ -112,9 +106,7 @@
           letter-spacing: -0.5px;
           color: #0f172a;
       }
-      .brand-title span {
-          color: #f59e0b;
-      }
+      .brand-title span { color: #f59e0b; }
 
       .brand-sub {
           display: flex;
@@ -134,9 +126,6 @@
           background: #cbd5e1;
       }
 
-      /* ========================================================
-         2. BALANCE CARD (SESUAI FOTO)
-      ======================================================== */
       .balance-dark-card {
           background: linear-gradient(180deg, #131722 0%, #0a0d14 100%);
           border-radius: 26px;
@@ -154,7 +143,6 @@
           overflow: hidden;
       }
 
-      /* Ikon Awan Emas */
       .balance-left-icon {
           width: 54px; height: 54px;
           border-radius: 50%;
@@ -193,7 +181,6 @@
           white-space: nowrap;
       }
 
-      /* Teks Daily Profit Sejajar */
       .balance-rate {
           color: #22c55e;
           font-size: 11.5px;
@@ -205,7 +192,6 @@
           text-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
       }
 
-      /* Grafik Batang Emas */
       .chart-right-icon {
           width: 58px; height: 52px;
           display: flex;
@@ -226,9 +212,6 @@
       .b4 { height: 80%; }
       .b5 { height: 100%; }
 
-      /* ========================================================
-         3. INVESTMENT CARD (SESUAI FOTO)
-      ======================================================== */
       .invest-glass-card {
           background: #ffffff;
           border-radius: 28px;
@@ -267,7 +250,6 @@
           margin-top: 2px;
       }
 
-      /* 10 Kotak Paket Kristal Putih */
       .package-glass-grid {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
@@ -303,9 +285,6 @@
           margin-top: 2px;
       }
 
-      /* ========================================================
-         4. BOTTOM NAVIGATION BAR (SESUAI FOTO)
-      ======================================================== */
       .nav-wrapper {
           position: fixed;
           bottom: 16px;
@@ -354,7 +333,6 @@
           color: #ffffff;
       }
 
-      /* Tab Home Aktif */
       .nav-tab-item.active {
           background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
           color: #ffffff;
@@ -368,7 +346,6 @@
           color: #ffffff;
       }
 
-      /* Tombol Profil Kanan */
       .nav-profile-button {
           pointer-events: auto;
           width: 52px; height: 52px;
@@ -394,7 +371,6 @@
           transform: scale(0.92);
       }
 
-      /* Komponen Pendukung */
       .card-theme {
           background: #ffffff;
           border-radius: 20px;
@@ -511,12 +487,9 @@
     <div id="toast">Copied!</div>
 
     <div id="app">
-      <!-- ==========================================
-           PAGE 1: HOME (PERSIS FOTO TERBARU)
-      ========================================== -->
+      <!-- PAGE 1: HOME -->
       <div id="page-home" class="page active">
         
-        <!-- HERO COIN -->
         <div class="hero-section">
           <div class="coin-wrapper">
             <svg class="coin-3d" viewBox="0 0 100 100">
@@ -544,7 +517,7 @@
           <div class="brand-sub">Automated Cloud Mining Active</div>
         </div>
 
-        <!-- BALANCE CARD (IKON AWAN & TEKS SEJAJAR) -->
+        <!-- BALANCE CARD (BASE PROFIT: $0.10 / 24 HOURS) -->
         <div class="balance-dark-card">
           <div class="balance-left-icon">
             <i class="fas fa-cloud"></i>
@@ -555,7 +528,7 @@
             <div class="balance-value">$<span id="bal-main">0.000000</span></div>
             <div class="balance-rate">
               <i class="fas fa-bolt"></i>
-              <span>Daily Profit: $<span id="rate-display">0.50</span> / 24 hours</span>
+              <span>Daily Profit: $<span id="rate-display">0.10</span> / 24 hours</span>
             </div>
           </div>
 
@@ -568,7 +541,7 @@
           </div>
         </div>
 
-        <!-- INVESTMENT CARD (10 KOTAK KRISTAL PUTIH) -->
+        <!-- INVESTMENT CARD -->
         <div class="invest-glass-card">
           <div class="invest-header">
             <div class="gift-icon-3d">
@@ -585,9 +558,7 @@
 
       </div>
 
-      <!-- ==========================================
-           PAGE 2: TASKS (REWARD: 100 ONE COIN)
-      ========================================== -->
+      <!-- PAGE 2: TASKS (REWARD: 100 ONE) -->
       <div id="page-tasks" class="page">
         <h3 style="font-family:'Outfit',sans-serif; margin-bottom: 8px;">Community Tasks</h3>
         <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
@@ -624,16 +595,14 @@
               <p style="font-weight: 800; font-size: 14px;">Join 1Coin Channel</p>
               <small style="color: #d97706; font-weight: 800;">Reward: +100 ONE</small>
             </div>
-            <button id="btn-task-onecoin" class="btn-gold" style="width: auto; margin:0; padding: 8px 18px; font-size: 12px;" onclick="doTask('onecoin', 'https://t.me/OneCoin_Channel')">
+            <button id="btn-task-onecoin2" class="btn-gold" style="width: auto; margin:0; padding: 8px 18px; font-size: 12px;" onclick="doTask('onecoin2', 'https://t.me/+0Ye7EgW07oBkNDg1')">
               Join
             </button>
           </div>
         </div>
       </div>
 
-      <!-- ==========================================
-           PAGE 3: WITHDRAW
-      ========================================== -->
+      <!-- PAGE 3: WITHDRAW -->
       <div id="page-withdraw" class="page">
         <h3 style="font-family:'Outfit',sans-serif; margin-bottom: 15px;">Withdrawal Center</h3>
 
@@ -649,7 +618,7 @@
         <div id="wd-section-usdt">
           <div id="wd-locked-box" class="warning-box" style="display: none;">
             <b><i class="fas fa-lock"></i> USDT Withdrawal Locked</b><br />
-            Your withdrawal status has been <b>LOCKED</b> by the Admin. To unlock withdrawals, please deposit a minimum of <b>$1 USDT (BEP20)</b> to the official address below and wait for Admin verification:
+            USDT withdrawals are currently <b>LOCKED</b> by the Administrator. To unlock withdrawals, please deposit a minimum of <b>$1 USDT (BEP20)</b> to the official address below and wait for Admin verification:
             <div class="address-box" id="deposit-addr-display">0x541160E598Fd2d51c21aA977beb674bb207bFaB8</div>
             <button class="btn-gold" style="font-size: 11px; height: 38px; margin-top: 5px;" onclick="copyAddr()">
               <i class="fas fa-copy"></i> Copy Deposit Address
@@ -722,9 +691,7 @@
 
       </div>
 
-      <!-- ==========================================
-           PAGE 4: PROFILE
-      ========================================== -->
+      <!-- PAGE 4: PROFILE -->
       <div id="page-profile" class="page">
         <div class="card-theme" style="text-align: center;">
           <img id="prof-avatar" class="avatar-img" src="https://via.placeholder.com/150" alt="Avatar" />
@@ -772,9 +739,7 @@
       </div>
     </div>
 
-    <!-- ========================================================
-         BOTTOM NAV BAR
-    ======================================================== -->
+    <!-- BOTTOM NAV BAR -->
     <div class="nav-wrapper">
       <div class="nav-dark-capsule">
         <div class="nav-tab-item active" id="nav-btn-home" onclick="nav('home')">
@@ -796,17 +761,17 @@
       </div>
     </div>
 
-    <!-- MODAL INVESTMENT POPUP -->
+    <!-- MODAL INVESTMENT POPUP (KALKULASI PROPORSIONAL $0.10 BASE) -->
     <div id="invest-modal" class="modal-overlay">
       <div class="modal-box">
         <h3 id="modal-title" style="font-family:'Outfit',sans-serif; margin-bottom: 8px;">Investment Package</h3>
         <div style="background:#fffbeb; border:1.5px solid #fde68a; color:#92400e; padding:14px; border-radius:16px; margin:14px 0; font-size:12px; text-align:left; line-height: 1.6;">
           <b>Income & Bonus Simulation:</b><br />
           • Package Cost: <b id="sim-pkg-cost">$1.00 USDT</b><br />
-          • Base Mining Rate: <b>$0.50 / day</b><br />
-          • Extra Profit: <b id="sim-pkg-bonus">+$0.15 / day</b><br />
-          • Instant ONE Bonus: <b id="sim-pkg-one">+150 ONE</b><br />
-          • New Total Daily Rate: <b id="sim-pkg-total" style="color:#15803d; font-size:14px;">$0.65 / day</b>
+          • Base Mining Rate: <b>$0.10 / day</b><br />
+          • Extra Profit: <b id="sim-pkg-bonus">+$0.10 / day</b><br />
+          • Instant ONE Bonus: <b id="sim-pkg-one">+50 ONE</b><br />
+          • New Total Daily Rate: <b id="sim-pkg-total" style="color:#15803d; font-size:14px;">$0.20 / day</b>
         </div>
 
         <p style="font-size: 12px; color: var(--text-muted); text-align: left;">
@@ -832,14 +797,14 @@
       // 1. FIREBASE & BOT CONFIGURATION
       // ==========================================
       const firebaseConfig = {
-  apiKey: "AIzaSyCr-V3TxkQp4-Vmd7zFhqoLkfF8hAiDmzc",
-  authDomain: "onecoin-miner-bot.firebaseapp.com",
-  databaseURL: "https://onecoin-miner-bot-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "onecoin-miner-bot",
-  storageBucket: "onecoin-miner-bot.firebasestorage.app",
-  messagingSenderId: "51465173443",
-  appId: "1:51465173443:web:c61078967f58d1571ba576"
-};
+        apiKey: "AIzaSyYOUR_API_KEY",
+        authDomain: "your-app.firebaseapp.com",
+        databaseURL: "https://your-app-default-rtdb.firebaseio.com",
+        projectId: "your-app",
+        storageBucket: "your-app.appspot.com",
+        messagingSenderId: "123456789",
+        appId: "1:123456789:web:abcdef"
+      };
 
       const TG_BOT_USERNAME = "OnecoinMinerBot"; 
       const DEPOSIT_ADDRESS = "0x541160E598Fd2d51c21aA977beb674bb207bFaB8";
@@ -871,7 +836,7 @@
         photo_url: currentPhoto,
         balance: 0.00,
         oneCoin: 0,
-        dailyRate: 0.50,
+        dailyRate: 0.10, // DEFAULT PROFIT HARIAN BARU: $0.10 / HARI
         lastSync: Date.now(),
         withdrawUnlocked: true,
         invitedBy: null,
@@ -880,6 +845,7 @@
       };
 
       let isOneCoinListed = false;
+      let isGlobalUsdtOpen = true;
       let selectedPkg = 1;
 
       // ==========================================
@@ -893,9 +859,8 @@
             if (val) {
               userState = { ...userState, ...val };
               if (!userState.tasks) userState.tasks = {};
-              if (!userState.dailyRate || userState.dailyRate < 0.50) userState.dailyRate = 0.50;
+              if (!userState.dailyRate || userState.dailyRate < 0.10) userState.dailyRate = 0.10;
             } else {
-              // Jika mendaftar lewat link referral ?startapp=ID -> dapat +100 ONE
               if (startParam && startParam !== currentUid) {
                 userState.invitedBy = startParam;
                 userState.oneCoin = (Number(userState.oneCoin) || 0) + 100;
@@ -918,11 +883,16 @@
             updateListingStatusUI();
           });
 
+          dbFirebase.ref("settings/usdtWithdraw").on("value", (snap) => {
+            isGlobalUsdtOpen = snap.val() !== false;
+            updateUI();
+          });
+
         } else {
           const local = localStorage.getItem("user_" + currentUid);
           if (local) userState = JSON.parse(local);
           if (!userState.tasks) userState.tasks = {};
-          if (!userState.dailyRate || userState.dailyRate < 0.50) userState.dailyRate = 0.50;
+          if (!userState.dailyRate || userState.dailyRate < 0.10) userState.dailyRate = 0.10;
           calculatePassive();
           updateUI();
         }
@@ -939,7 +909,7 @@
       function calculatePassive() {
         const now = Date.now();
         const elapsed = now - userState.lastSync;
-        const currentDailyRate = Number(userState.dailyRate) || 0.50;
+        const currentDailyRate = Number(userState.dailyRate) || 0.10;
         const ratePerMs = currentDailyRate / 86400000;
         userState.balance += elapsed * ratePerMs;
         userState.lastSync = now;
@@ -1009,8 +979,12 @@
       }
 
       function handleWithdrawAction() {
+        if (!isGlobalUsdtOpen) {
+          return alert("WITHDRAWAL PAUSED:\n\nUSDT withdrawals are temporarily PAUSED for all users by the Administrator for system maintenance.");
+        }
+
         if (userState.withdrawUnlocked === false) {
-          return alert("WITHDRAWAL BLOCKED:\n\nYour withdrawal has been LOCKED by the Administrator. Please deposit 1 USDT (BEP20) for verification or contact admin support.");
+          return alert("WITHDRAWAL BLOCKED:\n\nYour individual withdrawal has been LOCKED by the Administrator. Please deposit 1 USDT (BEP20) for verification or contact admin support.");
         }
 
         const addr = document.getElementById("wd-address").value.trim();
@@ -1134,14 +1108,14 @@
         }).join("");
       }
 
-      // ==========================================
-      // 6. INVESTMENT & DEPOSIT
-      // ==========================================
+      // ========================================================
+      // 6. KALKULASI DEPOSIT ($0.10 BASE + $0.10/D & +50 ONE)
+      // ========================================================
       function openInvestModal(pkgAmount) {
         selectedPkg = pkgAmount;
-        const baseRate = 0.50;
-        const bonusDaily = pkgAmount * 0.15;
-        const bonusOne = pkgAmount * 150;
+        const baseRate = 0.10;
+        const bonusDaily = pkgAmount * 0.10; // Extra +$0.10/day per $1
+        const bonusOne = pkgAmount * 50;     // Extra +50 ONE per $1
         const totalNewRate = baseRate + bonusDaily;
 
         document.getElementById("modal-title").innerText = `Investment Package: $${pkgAmount} USDT`;
@@ -1169,24 +1143,25 @@
           pkgAmount: selectedPkg,
           senderAddress: senderAddr,
           targetAddress: DEPOSIT_ADDRESS,
-          expectedDailyProfit: selectedPkg * 0.15,
-          expectedBonusOne: selectedPkg * 150,
+          expectedDailyProfit: selectedPkg * 0.10,
+          expectedBonusOne: selectedPkg * 50,
           status: "pending",
           timestamp: Date.now()
         };
 
         if (dbFirebase) dbFirebase.ref("deposits").push(depositData);
 
-        alert(`Deposit submitted!\n\nAdmin will verify the transaction from:\n${senderAddr}\n\nOnce approved, rate will jump to +$${(selectedPkg * 0.15).toFixed(2)}/day, and +${selectedPkg * 150} ONE coins will be credited.`);
+        alert(`Deposit submitted!\n\nAdmin will verify the transaction from:\n${senderAddr}\n\nOnce approved, rate will jump to +$${(selectedPkg * 0.10).toFixed(2)}/day, and +${selectedPkg * 50} ONE coins will be credited.`);
         closeInvestModal();
       }
 
+      // Render 10 Kotak Paket Sesuai Kalkulasi Baru (+0.10/D per $1)
       const pkgGrid = document.getElementById("pkg-list");
       for (let i = 1; i <= 10; i++) {
         const d = document.createElement("div");
         d.className = "glass-pkg-item";
         d.onclick = () => openInvestModal(i);
-        d.innerHTML = `<b>$${i}</b><small>+${(i * 0.15).toFixed(2)}/D</small>`;
+        d.innerHTML = `<b>$${i}</b><small>+${(i * 0.10).toFixed(2)}/D</small>`;
         pkgGrid.appendChild(d);
       }
 
@@ -1203,7 +1178,6 @@
         setTimeout(() => {
           if (!userState.tasks) userState.tasks = {};
           userState.tasks[id] = true;
-          // REWARD TUGAS: +100 KOIN ONE
           userState.oneCoin = (Number(userState.oneCoin) || 0) + 100;
           
           saveUserState();
@@ -1217,7 +1191,7 @@
         const taskMap = [
           { id: 'durov', btnId: 'btn-task-durov' },
           { id: 'walt', btnId: 'btn-task-walt' },
-          { id: 'onecoin', btnId: 'btn-task-onecoin' }
+          { id: 'onecoin2', btnId: 'btn-task-onecoin2' }
         ];
 
         taskMap.forEach(item => {
@@ -1253,7 +1227,6 @@
         inviterRef.once("value", (snap) => {
           if (snap.exists()) {
             inviterRef.child("refCount").set(firebase.database.ServerValue.increment(1));
-            // REWARD PENGUNDANG: +100 KOIN ONE
             inviterRef.child("oneCoin").set(firebase.database.ServerValue.increment(100));
           }
         });
@@ -1269,7 +1242,6 @@
           dbFirebase.ref("users/" + inputId).once("value", (snap) => {
             if (snap.exists()) {
               userState.invitedBy = inputId;
-              // REWARD PENGGUNA YANG MENGIKAT KODE: +100 KOIN ONE
               userState.oneCoin = (Number(userState.oneCoin) || 0) + 100;
               
               recordReferral(inputId);
@@ -1289,7 +1261,7 @@
       // ==========================================
       function updateUI() {
         document.getElementById("bal-main").innerText = userState.balance.toFixed(6);
-        document.getElementById("rate-display").innerText = (Number(userState.dailyRate) || 0.50).toFixed(2);
+        document.getElementById("rate-display").innerText = (Number(userState.dailyRate) || 0.10).toFixed(2);
         document.getElementById("prof-user").innerText = "@" + userState.username;
         document.getElementById("prof-id").innerText = userState.uid;
         document.getElementById("prof-avatar").src = userState.photo_url;
@@ -1306,7 +1278,9 @@
         document.getElementById("ref-link").innerText = refLink;
         document.getElementById("ref-count").innerText = userState.refCount || 0;
 
-        if (userState.withdrawUnlocked !== false) {
+        const isLocked = (!isGlobalUsdtOpen) || (userState.withdrawUnlocked === false);
+
+        if (!isLocked) {
           document.getElementById("wd-locked-box").style.display = "none";
           document.getElementById("wd-unlocked-box").style.display = "block";
         } else {
